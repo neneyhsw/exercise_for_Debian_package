@@ -1,0 +1,263 @@
+Source: vim
+Section: editors
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Debian Vim Maintainers <pkg-vim-maintainers@lists.alioth.debian.org>
+Uploaders:
+ James McCoy <jamessan@debian.org>,
+Standards-Version: 4.4.1
+Rules-Requires-Root: no
+Build-Depends:
+ autoconf,
+ cscope <!nocheck>,
+ debhelper (>= 11~),
+ libacl1-dev,
+ libcanberra-dev,
+ libgpmg1-dev [linux-any],
+ libgtk-3-dev,
+ liblua5.2-dev,
+ libperl-dev,
+ libselinux1-dev [linux-any],
+ libncurses-dev,
+# Needed to run libvterm's tests
+ libtool-bin <!nocheck>,
+ libxaw7-dev,
+ libxpm-dev,
+ libxt-dev,
+ lua5.2,
+ python3-dev,
+ ruby,
+ ruby-dev,
+ tcl-dev,
+Build-Conflicts:
+ autoconf2.13,
+Build-Depends-Indep:
+ docbook-utils,
+ docbook-xml,
+ ghostscript,
+ pdf2svg,
+Vcs-Git: https://salsa.debian.org/vim-team/vim.git
+Vcs-Browser: https://salsa.debian.org/vim-team/vim
+Homepage: https://www.vim.org/
+
+Package: vim-common
+Priority: important
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ xxd,
+ ${misc:Depends},
+Recommends:
+ vim | vim-gtk3 | vim-athena | vim-nox | vim-tiny,
+Description: Vi IMproved - Common files
+ Vim is an almost compatible version of the UNIX editor Vi.
+ .
+ This package contains files shared by all non GUI-enabled vim variants
+ available in Debian.  Examples of such shared files are: manpages and
+ configuration files.
+
+Package: vim-gui-common
+Architecture: all
+Multi-Arch: foreign
+Recommends:
+ vim-gtk3 | vim-athena,
+Depends:
+ ${misc:Depends},
+Description: Vi IMproved - Common GUI files
+ Vim is an almost compatible version of the UNIX editor Vi.
+ .
+ This package contains files shared by all GUI-enabled vim
+ variants available in Debian.  Examples of such shared files are:
+ gvimtutor, icons, and desktop environments settings.
+
+Package: vim-runtime
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+Breaks:
+ vim-tiny (<< ${source:Version}),
+Recommends:
+ vim | vim-gtk3 | vim-athena | vim-nox | vim-tiny,
+Enhances:
+ vim-tiny,
+Description: Vi IMproved - Runtime files
+ Vim is an almost compatible version of the UNIX editor Vi.
+ .
+ This package contains vimtutor and the architecture independent runtime
+ files, used, if available, by all vim variants available in Debian.
+ Example of such runtime files are: online documentation, rules for
+ language-specific syntax highlighting and indentation, color schemes,
+ and standard plugins.
+
+Package: vim-doc
+Section: doc
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+Description: Vi IMproved - HTML documentation
+ Vim is an almost compatible version of the UNIX editor Vi.
+ .
+ This package contains the HTML version of the online documentation.  It is
+ built from the runtime/doc directory of the source tree.
+
+Package: vim-tiny
+Priority: important
+Architecture: any
+Depends:
+ vim-common (= ${source:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends},
+Suggests:
+ indent,
+Provides:
+ editor,
+Description: Vi IMproved - enhanced vi editor - compact version
+ Vim is an almost compatible version of the UNIX editor Vi.
+ .
+ This package contains a minimal version of Vim compiled with no GUI and
+ a small subset of features. This package's sole purpose is to provide
+ the vi binary for base installations.
+ .
+ If a vim binary is wanted, try one of the following more featureful
+ packages: vim, vim-nox, vim-athena, or vim-gtk3.
+
+Package: vim
+Architecture: any
+Depends:
+ vim-common (= ${source:Version}),
+ vim-runtime (= ${source:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends},
+Suggests:
+ ctags,
+ vim-doc,
+ vim-scripts,
+Provides:
+ editor,
+Description: Vi IMproved - enhanced vi editor
+ Vim is an almost compatible version of the UNIX editor Vi.
+ .
+ Many new features have been added: multi level undo, syntax
+ highlighting, command line history, on-line help, filename
+ completion, block operations, folding, Unicode support, etc.
+ .
+ This package contains a version of vim compiled with a rather
+ standard set of features.  This package does not provide a GUI
+ version of Vim.  See the other vim-* packages if you need more
+ (or less).
+
+Package: vim-gtk
+Architecture: all
+Depends:
+ vim-gtk3,
+ ${misc:Depends},
+Section: oldlibs
+Description: Vi IMproved - enhanced vi editor (dummy package)
+ This is a transitional package to install the vim-gtk3 package.  You may
+ remove this package if nothing depends on it.
+
+Package: vim-gtk3
+Architecture: any
+Depends:
+ vim-common (= ${source:Version}),
+ vim-gui-common (= ${source:Version}),
+ vim-runtime (= ${source:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends},
+Suggests:
+ cscope,
+ fonts-dejavu,
+ gnome-icon-theme,
+ vim-doc,
+Provides:
+ editor,
+ gvim,
+ vim,
+ vim-lua,
+ vim-perl,
+ vim-python3,
+ ${vim:Ruby-Provides},
+ vim-tcl,
+Description: Vi IMproved - enhanced vi editor - with GTK3 GUI
+ Vim is an almost compatible version of the UNIX editor Vi.
+ .
+ Many new features have been added: multi level undo, syntax
+ highlighting, command line history, on-line help, filename
+ completion, block operations, folding, Unicode support, etc.
+ .
+ This package contains a version of vim compiled with a GTK3 GUI
+ and support for scripting with Lua, Perl, Python 3,${vim:Ruby-Desc} and Tcl.
+
+Package: vim-nox
+Architecture: any
+Depends:
+ vim-common (= ${source:Version}),
+ vim-runtime (= ${source:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends},
+Suggests:
+ cscope,
+ vim-doc,
+Provides:
+ editor,
+ vim,
+ vim-lua,
+ vim-perl,
+ vim-python3,
+ vim-ruby,
+ vim-tcl,
+Description: Vi IMproved - enhanced vi editor - with scripting languages support
+ Vim is an almost compatible version of the UNIX editor Vi.
+ .
+ Many new features have been added: multi level undo, syntax
+ highlighting, command line history, on-line help, filename
+ completion, block operations, folding, Unicode support, etc.
+ .
+ This package contains a version of vim compiled with support for
+ scripting with Lua, Perl, Python 3, Ruby, and Tcl but no GUI.
+
+Package: vim-athena
+Architecture: any
+Depends:
+ vim-common (= ${source:Version}),
+ vim-gui-common (= ${source:Version}),
+ vim-runtime (= ${source:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends},
+Suggests:
+ cscope,
+ vim-doc,
+Provides:
+ editor,
+ gvim,
+ vim,
+ vim-lua,
+ vim-perl,
+ vim-python3,
+ vim-ruby,
+ vim-tcl,
+Description: Vi IMproved - enhanced vi editor - with Athena GUI
+ Vim is an almost compatible version of the UNIX editor Vi.
+ .
+ Many new features have been added: multi level undo, syntax
+ highlighting, command line history, on-line help, filename
+ completion, block operations, folding, Unicode support, etc.
+ .
+ This package contains a version of vim compiled with a Athena GUI
+ and support for scripting with Lua, Perl, Python 3, Ruby, and Tcl.
+
+Package: xxd
+Architecture: any
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Breaks:
+ vim-common (<< 2:7.4.2347-1~),
+Replaces:
+ vim-common (<< 2:7.4.2347-1~),
+Description: tool to make (or reverse) a hex dump
+ xxd creates a hex dump of a given file or standard input.  It can also convert
+ a hex dump back to its original binary form.

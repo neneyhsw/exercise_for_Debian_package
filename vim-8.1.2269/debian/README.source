@@ -1,0 +1,41 @@
+If you are reading this from a Debian source package, you can stop now;
+this package should build normally after extracting with dpkg-source -x.
+The rest of this file gives some hints about generating source packages
+from the packaging git repository.
+
+This repository maintains patches to upstream source using gbp-pq.  These
+patches are serialized to debian/patches/.
+
+In order to modify an existing patch, simply run “gbp pq import”.  This will
+create a local branch with the commits that were used to create the patches.
+Edit or amend the commits as necessary.
+
+In order to create a new patch, switch to the patch using “gbp pq import” as
+before. If a patch file exists, use “gbp pg apply --topic={upstream,debian}
+patchfile” to apply the patch (works like “git am”).  If the patch is intended
+to be upstreamed, it should be applied before any Debian-specific patches and
+use the "upstream" topic.  Alternatively, if the patch is not intended to be
+upstreamed, it should use the "debian" topic and be applied after any upstream
+patches.
+
+When updating to a new version of upstream code, the patches need to be rebased
+on the new upstream code.  The process is
+
+* Create the patch-queue branch -- gbp pq import
+* Switch back to the packaging branch -- gbp pq switch
+* Merge the upstream tag -- git merge vX.Y.ZZZZ
+* Rebase the patches -- gbp pq rebase
+  * Make any adjustments/fixups, as necessary
+* Switch back to the packaging branch -- gbp pq switch
+* Export the patches -- gbp pq export
+
+Whenever the patch queue branch is modified, those changes need to be exported
+back to the packaging branch.  “gbp pq switch” will change from the patch queue
+branch to the packaging branch.  At that point, “gbp pq export” will update
+debian/patches/ with the current state of the patch queue.  This needs to be
+commited just like any other change.
+
+There are hooks setup in the git repo to avoid pushing the patch queue
+branches, but it's also wise to remove the local branch when done with the
+changes.  The repository's configuration is set to delete the branch
+automatically after running “gbp pq export” in order to help enforce this.

@@ -1,0 +1,2295 @@
+Patches for Vim - Vi IMproved 8.1
+
+The files in this directory contain source code changes to fix problems
+in a released version of Vim.  Each file also contains an explanation of
+the problem that is fixed, like the message that was sent to the vim-dev
+maillist.
+
+The best is to apply the patches in sequence.  This avoids problems when
+a patch depends on a previous patch. 
+
+Before patching, change to the top Vim directory, where the "src" and
+"runtime" directories are located.
+Depending on the version of "patch" that you use, you may have add an
+argument to make it patch the right file:
+        patch -p < 8.1.0001
+        patch -p0 < 8.1.0001
+
+After applying a patch, you need to compile Vim.  There are no patches
+for binaries.
+
+Checksums for the patch files can be found in the file MD5SUMS.
+
+
+Individual patches for Vim 8.1:
+
+  SIZE  NAME      FIXES
+  2006  8.1.0001  the netrw plugin does not work
+  2572  8.1.0002  :stopinsert changes the message position
+  3792  8.1.0003  the :compiler command is not tested
+  1751  8.1.0004  test for :compiler command sometimes fails
+  1807  8.1.0005  test for :compiler command fails on MS-Windows
+  1693  8.1.0006  syn_id2cterm_bg() may be undefined
+  1962  8.1.0007  no test for "o" and "O" in Visual block mode
+  2386  8.1.0008  no test for strwidth()
+  2778  8.1.0009  tabpages insufficiently tested
+  9415  8.1.0010  efm_to_regpat() is too long
+  2536  8.1.0011  maparg() and mapcheck() confuse empty and non-existing
+  1610  8.1.0012  misplaced #endif
+  6717  8.1.0013  using freed memory when changing terminal cursor color
+ 13559  8.1.0014  qf_init_ext() is too long
+  4186  8.1.0015  cursor color wrong when closing a terminal window
+  1890  8.1.0016  possible crash in term_wait()
+  5801  8.1.0017  shell command completion has duplicates
+  9499  8.1.0018  using "gn" may select wrong text when wrapping
+  2326  8.1.0019  error when defining a Lambda with index of a function result
+ 15279  8.1.0020  cannot tell whether a register is executing or recording
+  2235  8.1.0021  clang warns for undefined behavior
+  2396  8.1.0022  repeating put from expression register fails
+  2004  8.1.0023  gcc 8.1 warns for use of strncpy()
+  2617  8.1.0024  % command not testded on #ifdef and comment
+  4779  8.1.0025  no test for the undofile() function
+  1809  8.1.0026  terminal test fails with very tall terminal
+ 50988  8.1.0027  difficult to make a plugin that feeds a line to a job
+  1760  8.1.0028  prompt buffer test fails on MS-Windows
+  1495  8.1.0029  terminal test fails on MS-Windows when "wc" exists
+  3105  8.1.0030  stoping Vim running in a terminal may not work
+  1611  8.1.0031  terminal test aucmd_on_close is flaky
+  5262  8.1.0032  BS in prompt buffer starts new line
+  1848  8.1.0033  keys to stop Vim in terminal are wrong
+  2716  8.1.0034  cursor not restored with ":edit #"
+  6569  8.1.0035  not easy to switch between prompt buffer and other windows
+  4578  8.1.0036  not restoring Insert mode if leaving prompt buffer with mouse
+ 15307  8.1.0037  cannot easily append lines to another buffer
+  1978  8.1.0038  popup test causes Vim to exit
+  8953  8.1.0039  cannot easily delete lines in another buffer
+  2531  8.1.0040  warnings from 64-bit compiler
+  4059  8.1.0041  attribute "width" missing from python window attribute list
+  3565  8.1.0042  if omni completion opens a window Insert mode is stopped
+  3435  8.1.0043  ++bad argument of :edit does not work properly
+  2509  8.1.0044  if a test function exists Vim this may go unnoticed
+  8195  8.1.0045  popup test isn't run completely
+  5925  8.1.0046  loading a session file fails if 'winheight' is big
+  2905  8.1.0047  no completion for :unlet $VAR
+  3129  8.1.0048  vim_str2nr() does not handle numbers close to the maximum
+  7856  8.1.0049  shell cannot tell running in a terminal window
+ 12084  8.1.0050  $VIM_TERMINAL is also set when not in a terminal window
+  1187  8.1.0051  MS-Windows: missing #endif
+  1660  8.1.0052  when mapping to <Nop> times out the next mapping is skipped
+ 17493  8.1.0053  first argument of 'completefunc' has inconsistent type
+  1978  8.1.0054  compiler warning for using %ld for "long long"
+  2674  8.1.0055  complete test has wrong order of arguments
+  2996  8.1.0056  crash when using :hardcopy with illegal byte
+  5625  8.1.0057  popup menu displayed wrong when using autocmd
+  5833  8.1.0058  display problem with margins and scrolling
+  3006  8.1.0059  displayed digraph for "ga" wrong with 'encoding' "cp1251"
+  2199  8.1.0060  crash when autocommands delete the current buffer
+  9361  8.1.0061  window title is wrong after resetting and setting 'title'
+ 10083  8.1.0062  popup menu broken if a callback changes the window layout
+  4134  8.1.0063  Mac: NSStringPboardType is deprecated
+  3198  8.1.0064  typing CTRL-W in a prompt buffer shows mode "-- --"
+  2714  8.1.0065  (after 8.1.0062) balloon displayed at the wrong position
+  4125  8.1.0066  nasty autocommand causes using freed memory
+  3453  8.1.0067  syntax highlighting not working when re-entering a buffer
+  2218  8.1.0068  nasty autocommands can still cause using freed memory
+ 10539  8.1.0069  cannot handle pressing CTRL-C in a prompt buffer
+  1772  8.1.0070  missing part of the changes for prompt_setinterrupt()
+ 24885  8.1.0071  terminal debugger only works with the terminal feature
+  3489  8.1.0072  use of 'termwinkey' is inconsistent
+  2490  8.1.0073  crash when autocommands call setloclist()
+  1917  8.1.0074  (after 8.1.0073) crash when running quickfix tests
+  1690  8.1.0075  no Vim logo in README file
+  2192  8.1.0076  command getting cleared with CTRL-W : in a terminal window
+  1575  8.1.0077  header of README file is not nice
+  3972  8.1.0078  "..." used inconsistently in messages
+  1941  8.1.0079  superfluous space in messages
+  9680  8.1.0080  can't see the breakpoint number in the terminal debugger
+  2721  8.1.0081  the terminal debugger doesn't adjust to changed 'background'
+  3834  8.1.0082  in terminal window, typing : at more prompt, inserts ':'
+  5227  8.1.0083  "is" and "as" have trouble with quoted punctuation
+  5639  8.1.0084  user name completion does not work on MS-Windows
+  3269  8.1.0085  no test for completing user name and language
+  2588  8.1.0086  no tests for libcall() and libcallnr()
+  6792  8.1.0087  v:shell_error is always zero when using terminal for "!cmd"
+  2126  8.1.0088  terminal test for stdout and stderr is a bit flaky
+  5766  8.1.0089  error when ending the terminal debugger
+  4270  8.1.0090  "..." used inconsistently in a message
+ 10822  8.1.0091  MS-Windows: Cannot interrupt gdb when program is running
+  1512  8.1.0092  (after 8.1.0091) prompt buffer test fails
+  2187  8.1.0093  non-MS-Windows: Cannot interrupt gdb when program is running
+  1399  8.1.0094  help text "usage:" is not capatalized
+  2373  8.1.0095  dialog for ":browse tabnew" says "new window"
+  4382  8.1.0096  inconsistent use of the word autocommands
+  1805  8.1.0097  superfluous space before exclamation mark
+  9705  8.1.0098  segfault when pattern with \z() is very slow
+  1924  8.1.0099  exclamation mark in error message not needed
+  1595  8.1.0100  terminal debugger: error when setting a watch point
+  1769  8.1.0101  no test for getcmdwintype()
+  1557  8.1.0102  cannot build without syntax highlighting
+  5682  8.1.0103  long version string cannot be translated
+  1709  8.1.0104  can't build without the +eval feature
+ 91953  8.1.0105  all tab stops are the same
+  1471  8.1.0106  build fails when HAVE_DATE_TIME is undefined
+  2523  8.1.0107  Python: getting buffer option clears message
+206793  8.1.0108  no Danish translations
+  1365  8.1.0109  new po makefile missing from distribution
+  2466  8.1.0110  file name not displayed with ":file"
+  4914  8.1.0111  .po files do not use recommended names
+  4681  8.1.0112  no error when using bad arguments with searchpair()
+  1508  8.1.0113  compiler warning for unused variable
+  6304  8.1.0114  confusing variable name
+  1961  8.1.0115  the matchparen plugin may throw an error
+  2800  8.1.0116  display problem with 'vartabstop' and 'linebreak'
+  1760  8.1.0117  URL in install program still points to SourceForge
+  4245  8.1.0118  duplicate error message for put command
+  1948  8.1.0119  failing test goes unnoticed because messages is not written
+  5855  8.1.0120  buffer 'modified' set even when :sort has no changes
+  4713  8.1.0121  crash when using ballooneval related to 'vartabstop'
+  1658  8.1.0122  translators don't always understand the maintainer message
+  1718  8.1.0123  MS-Windows: colors are wrong after setting 'notgc'
+  1597  8.1.0124  has('vcon') returns true even for non-win32 terminal
+  4884  8.1.0125  virtual edit replace with multi-byte fails at end of line
+  6119  8.1.0126  various problems with 'vartabstop'
+  1817  8.1.0127  build failure when disabling the session feature
+ 13345  8.1.0128  building with MinGW does not work out-of-the-box
+  1716  8.1.0129  still some xterm-like terminals get a stray "p"
+  5062  8.1.0130  ":profdel func" does not work if func was called already
+  7164  8.1.0131  :profdel is not tested
+ 21355  8.1.0132  lua tests are old style
+  3994  8.1.0133  tagfiles() can have duplicate entries
+ 18460  8.1.0134  Lua interface does not support funcref
+  2589  8.1.0135  undo message delays screen update for CTRL-O u
+  9996  8.1.0136  Lua tests don't cover new features
+  8177  8.1.0137  CI does not run with TCL
+  4761  8.1.0138  negative value of 'softtabstop' not used correctly
+  3091  8.1.0139  Lua tests fail on some platforms
+  2895  8.1.0140  recording into a register has focus events
+ 15890  8.1.0141  :cexpr no longer jumps to the first error
+  4578  8.1.0142  xterm and vt320 builtin termcap missing keypad keys
+  6351  8.1.0143  matchit and matchparen don't handle E363
+  2728  8.1.0144  the :cd command does not have good test coverage
+  2327  8.1.0145  test with grep is failing on MS-Windows
+  1367  8.1.0146  when $LANG is set the compiler test may fail
+  3044  8.1.0147  compiler warning when building with Python 3.7
+  1512  8.1.0148  memory leak when using :tcl expr command
+  6889  8.1.0149  session is wrong with multiple tabs when :lcd was used
+ 22149  8.1.0150  insufficient test coverage for Tcl
+  1593  8.1.0151  mksession test fails on MS-Windows
+ 11431  8.1.0152  cannot easily run individual tests on MS-Windows
+  1970  8.1.0153  (after 8.1.0152) build with SHADOWDIR fails
+  3833  8.1.0154  crash with "set smarttab shiftwidth=0 softtabstop=-1"
+  1273  8.1.0155  evim.man missing from the distribution
+  1574  8.1.0156  MS-Windows compiler warning
+  2144  8.1.0157  old iTerm2 is not recognized, resulting in stray output
+  1647  8.1.0158  GUI: input() fails if CTRL-C was pressed before
+  2569  8.1.0159  completion for user names does not work for a prefix.
+  1361  8.1.0160  no Danish manual translations
+  3923  8.1.0161  buffer not updated with 'autoread' set if file was deleted
+  6881  8.1.0162  Danish and German man pages are not installed
+  6408  8.1.0163  insufficient testing for Tcl
+  2724  8.1.0164  luaeval('vim.buffer().name') returns an error
+  3898  8.1.0165  :clist output can be very long
+ 38155  8.1.0166  using dict_add_nr_str() is clumsy
+  5740  8.1.0167  lock flag in new dictitem is reset in many places
+  4177  8.1.0168  output of :marks is too short with multi-byte chars
+  4184  8.1.0169  calling message_filtered() a bit too often
+  9933  8.1.0170  invalid memory use with complicated pattern
+  3250  8.1.0171  typing CTRL-W n in a terminal window causes ml_get error
+  1771  8.1.0172  'viminfofile' option does not behave like a file name
+  1429  8.1.0173  compiler warning on MS-Windows
+  3944  8.1.0174  after paging up and down fold line is wrong
+  1934  8.1.0175  marks test fails in very wide window
+  1599  8.1.0176  overlapping string argument for strcpy()
+  4584  8.1.0177  defining function in sandbox is inconsistent
+  1431  8.1.0178  warning for passing pointer to non-pointer argument
+  1857  8.1.0179  redundant condition for boundary check
+  4435  8.1.0180  static analysis errors in Lua interface
+  1921  8.1.0181  memory leak with trailing characters in skip expression
+  9703  8.1.0182  Unicode standard was updated
+  3966  8.1.0183  Lua API changed, breaking the build
+  4488  8.1.0184  not easy to figure out the window layout
+  4643  8.1.0185  running tests writes lua.vim even though it is not used
+  2592  8.1.0186  test for getwininfo() fails in GUI
+  9073  8.1.0187  getwininfo() and win_screenpos() return different numbers
+  1963  8.1.0188  no test for ":cscope add"
+  1688  8.1.0189  function defined in sandbox not tested
+  6411  8.1.0190  Perl refcounts are wrong
+  1565  8.1.0191  Perl test fails in 24 line terminal
+112175  8.1.0192  executing regexp recursively fails with a crash
+  1805  8.1.0193  terminal debugger buttons don't always work
+  2862  8.1.0194  possibly use of NULL pointer
+  1809  8.1.0195  terminal debugger commands don't always work
+  2085  8.1.0196  terminal debugger error with .gdbinit file
+  2341  8.1.0197  Windows GUI: title for search/replace is wrong
+  2382  8.1.0198  there is no hint that syntax is disabled for 'redrawtime'
+  1487  8.1.0199  spellbadword() does not check for caps error
+  3017  8.1.0200  spellbadword() not tested
+ 11749  8.1.0201  newer Python uses "importlib" instead of "imp"
+  2036  8.1.0202  :version always shows +packages
+  3913  8.1.0203  building with Perl 5.28 fails on Windows
+  2093  8.1.0204  inputlist() is not tested
+  6691  8.1.0205  invalid memory access with invalid modeline
+  2828  8.1.0206  duplicate test function name
+  2260  8.1.0207  need many menu translation files to cover regions
+  1379  8.1.0208  file left behind after running individual test
+  3024  8.1.0209  stderr output from Ruby messes up display
+  2831  8.1.0210  still a few K&R function declarations
+  7061  8.1.0211  expanding a file name "~" results in $HOME
+  7545  8.1.0212  preferred cursor column not set in interfaces
+  5556  8.1.0213  CTRL-W CR does not work properly in a quickfix window
+  1925  8.1.0214  +autochdir feature not reported by has() or :version
+  2582  8.1.0215  no error if configure --with-x cannot configure X
+  2392  8.1.0216  part of file not indented properly
+  2403  8.1.0217  compiler warning for variable set but not used
+  6928  8.1.0218  cannot add matches to another window
+  1963  8.1.0219  expanding ## fails to escape backtick
+  2311  8.1.0220  Ruby converts v:true and v:false to a number
+ 14127  8.1.0221  not enough testing for the Ruby interface
+  5102  8.1.0222  errors are reported for "make install"
+  4387  8.1.0223  completing shell command finds sub-directories in $PATH
+  3118  8.1.0224  hang in bracketed paste mode when t_PE not encountered
+  5657  8.1.0225  mode() does not indicate using CTRL-O from Insert mode
+ 28724  8.1.0226  too many #ifdefs
+  1700  8.1.0227  spaces instead of tabs in makefile
+ 15828  8.1.0228  dropping files is ignored while Vim is busy
+  3254  8.1.0229  crash when dumping profiling data
+  4212  8.1.0230  directly checking 'buftype' value
+  3398  8.1.0231  :help -? goes to help for -+
+  6091  8.1.0232  Ruby error does not include backtrace
+  9163  8.1.0233  "safe" argument of call_vim_function() is always FALSE
+  4813  8.1.0234  incorrect reference counting in Perl interface
+  6005  8.1.0235  more help tags that jump to the wrong location
+  3812  8.1.0236  Ruby build fails when ruby_intern is missing
+  2407  8.1.0237  Ruby on Cygwin doesn't always work
+  2455  8.1.0238  'buftype' is cleared when using ":term ++hidden cat"
+  3139  8.1.0239  now Ruby build fails on other systems
+  1835  8.1.0240  g:actual_curbuf set in wrong scope
+  1779  8.1.0241  effect of ":tabmove N" is not clear
+  2127  8.1.0242  Insert mode completion may use an invalid buffer pointer
+  3046  8.1.0243  using :term ++close ++hidden closes a window
+  6049  8.1.0244  no redraw when using a STOP signal on Vim and then CONT
+  3316  8.1.0245  calling setline() in TextChangedI autocmd breaks undo
+  1756  8.1.0246  build failure without the +eval feature
+  8011  8.1.0247  Python: error message for failing import is incorrect
+  4314  8.1.0248  duplicated quickfix code
+  2789  8.1.0249  GTK: when screen DPI changes Vim does not handle it
+  3230  8.1.0250  MS-Windows using VTP: windows size change incorrect
+ 12239  8.1.0251  using full path is not supported for 'backupdir'
+ 41015  8.1.0252  quickfix functions are too long
+ 14504  8.1.0253  saving and restoring window title does not always work
+  2428  8.1.0254  cannot build on MS-Windows; unused macro HAVE_HANDLE_DROP
+  2310  8.1.0255  backup test fails when using shadow directory
+  8885  8.1.0256  using setline() in TextChangedI splits undo
+  2084  8.1.0257  no test for pathshorten()
+  1854  8.1.0258  not enough testing for the CompleteDone event
+  4897  8.1.0259  no test for fixed quickfix issue
+  1783  8.1.0260  no LGTM logo in README file
+  4958  8.1.0261  Coverity complains about a negative array index
+  3052  8.1.0262  not enough testing for getftype()
+  3417  8.1.0263  channel log doesn't show part of channel
+  3278  8.1.0264  backup tests fail when CWD is in /tmp
+ 23576  8.1.0265  the getcmdline() function is way too big
+ 10962  8.1.0266  parsing Ex address range is not a separate function
+  3831  8.1.0267  no good check if restoring quickfix list worked
+ 10135  8.1.0268  file type checking has too many #ifdef
+  3772  8.1.0269  Ruby Kernel.#p method always returns nil
+  1866  8.1.0270  checking for a Tab in a line could be faster
+ 13097  8.1.0271  'incsearch' doesn't work for :s, :g or :v
+  1723  8.1.0272  options test fails if temp var ends in slash
+  1470  8.1.0273  invalid memory access when using 'incsearch'
+  4628  8.1.0274  'incsearch' triggers on ":source"
+  4964  8.1.0275  'incsearch' with :s doesn't start at cursor line
+  2991  8.1.0276  no test for 'incsearch' highlighting with :s
+  9021  8.1.0277  'incsearch' highlighting wrong in a few cases
+  2988  8.1.0278  'incsearch' highlighting does not accept reverse range
+  3306  8.1.0279  'incsearch' highlighting does not skip white space
+  2293  8.1.0280  'incsearch' highlighting does not work for ":g!/"
+ 19659  8.1.0281  parsing command modifiers is not separated
+ 14174  8.1.0282  'incsearch' does not work with command modifiers
+  1846  8.1.0283  missing test dump
+  3774  8.1.0284  'cursorline' highlighting wrong with 'incsearch'
+  1416  8.1.0285  compiler warning for conversion
+  3285  8.1.0286  'incsearch' does not apply to :smagic and :snomagic
+  1772  8.1.0287  MAX is not defined everywhere
+ 12170  8.1.0288  quickfix code uses cmdidx too often
+  2018  8.1.0289  cursor moves to wrong column after quickfix jump
+  2722  8.1.0290  "cit" on an empty HTML tag changes the whole tag
+  4355  8.1.0291  'incsearch' highlighting not used for :sort
+  2120  8.1.0292  MS-Windows: the text "self-installing" confuses some users
+  5483  8.1.0293  checks for type of stack is cryptic
+  2332  8.1.0294  MS-Windows: sometimes uses short directory name
+  9332  8.1.0295  no 'incsearch' highlighting for :vimgrep and similar
+  8125  8.1.0296  command parsing for 'incsearch' is a bit ugly
+  2733  8.1.0297  MS-Windows: tests fail, Vim crashes
+  1475  8.1.0298  window resize test sometimes fails on Mac
+  1657  8.1.0299  misplaced comment
+  2295  8.1.0300  the old window title might be freed twice
+  8790  8.1.0301  GTK: input method popup displayed on wrong screen.
+  6061  8.1.0302  crash when using :suspend and "fg"
+  2912  8.1.0303  line2byte() is wrong for last line with 'noeol'
+  9124  8.1.0304  no redraw when using a STOP signal on Vim and then CONT
+  3073  8.1.0305  missing support for Lua 5.4 32 bits on Unix
+ 14029  8.1.0306  plural messages are not translated properly
+  6949  8.1.0307  there is no good way to get the window layout
+  1720  8.1.0308  a quick undo shows "1 seconds ago"
+ 18244  8.1.0309  profiling does not show a count for condition lines
+  3277  8.1.0310  file info msg not always suppressed with 'F' in 'shortmess'
+  4009  8.1.0311  filtering entries in a quickfix list is not easy
+  7961  8.1.0312  wrong type for flags used in signal handlers
+  7881  8.1.0313  information about a swap file is unavailable
+  5176  8.1.0314  build failure without the +eval feature
+  6290  8.1.0315  helpgrep with language doesn't work properly
+  2195  8.1.0316  swapinfo() test fails on Travis
+  2110  8.1.0317  Cscope test fails when using shadow directory
+  3126  8.1.0318  the getftype() test may fail for char devices
+  1642  8.1.0319  bzero() function prototype doesn't work for Android
+  4447  8.1.0320  too much 'incsearch' highlight for pat matching everything
+  4558  8.1.0321  'incsearch' regression: /\v highlights everything
+  3868  8.1.0322  Test_copy_winopt() does not restore 'hidden'
+  2305  8.1.0323  reverse order of VTP calls only needed the first time
+  1492  8.1.0324  off-by-one error in cmdidx check
+  2183  8.1.0325  strings in swap file may not be NUL terminated
+  4926  8.1.0326  screen dump does not consider NUL and space equal
+  4900  8.1.0327  the "g CTRL-G" command isn't tested much
+  4775  8.1.0328  inputlist() doesn't work with a timer
+  1872  8.1.0329  using inputlist() during startup results in garbage
+  6219  8.1.0330  the qf_add_entries() function is too long
+  3811  8.1.0331  insufficient test coverage for :mkview and :loadview
+  1940  8.1.0332  get Gdk-Critical error on first balloon show
+  5951  8.1.0333  :mkview does not restore cursor properly after "$"
+  3122  8.1.0334  'autowrite' takes effect when buffer is not to be written
+  1780  8.1.0335  mkview test fails on CI
+  3139  8.1.0336  mkview test still fails on CI
+  3531  8.1.0337  :file fails in quickfix command
+  5890  8.1.0338  MS-Windows: VTP doesn't work properly with Powershell
+  3237  8.1.0339  wrong highlight when 'incsearch' set and cancelling :s
+  2219  8.1.0340  no test for :spellinfo
+  8417  8.1.0341  :argadd in empty buffer changes the buffer name
+  6555  8.1.0342  crash when a callback deletes a window that is being used
+  1636  8.1.0343  'shellslash' is not used for getcwd() with local directory
+  2422  8.1.0344  'hlsearch' highlighting has a gap after /$
+ 10052  8.1.0345  cannot get the window id associated with the location list
+ 57731  8.1.0346  building with Aap is outdated and unused
+  5485  8.1.0347  some tests fail on Solaris
+  4181  8.1.0348  on Travis the slowest build is run last
+  5581  8.1.0349  crash when wiping buffer in a callback
+  6919  8.1.0350  Vim may block on ch_sendraw()
+  5206  8.1.0351  'incsearch' for :/foo/s//<Esc> changes last search pattern
+  8073  8.1.0352  browsing compressed tar files does not always work
+  8839  8.1.0353  an "after" directory of a package is appended to 'rtp'
+  2279  8.1.0354  packadd test fails on MS-Windows
+  3168  8.1.0355  incorrect adjusting the popup menu for the preview window
+  6409  8.1.0356  using :s with 'incsearch' prevents CTRL-R CTRL-W
+  4016  8.1.0357  instructions for tests are outdated
+  1607  8.1.0358  crash when using term_dumpwrite() after the job finished
+  3072  8.1.0359  no clue what test failed when using a screendump twice
+237081  8.1.0360  using an external diff program is slow and inflexible
+  4571  8.1.0361  remote user not used for completion
+227344  8.1.0362  cannot get the script line number when executing a function
+  2800  8.1.0363  internal diff isn't used by default as advertised
+  2130  8.1.0364  compiler warning in xdiff code
+ 28602  8.1.0365  function profile doesn't specify where it was defined
+  3826  8.1.0366  pieces of the xdiff code are not used
+  1749  8.1.0367  getchar(1) no longer processes pending messages
+ 20303  8.1.0368  GTK code has too many #ifdefs and GTK 2.10 building fails
+  9213  8.1.0369  continuation lines cannot contain comments
+  1651  8.1.0370  not using internal diff if 'diffopt' is not changed
+  6298  8.1.0371  argument types for select() may be wrong
+  5591  8.1.0372  screen updating slow when 'cursorline' is set
+  1768  8.1.0373  screen updating still slow when 'cursorline' is set
+ 19602  8.1.0374  moving the cursor is slow when 'relativenumber' is set
+  2197  8.1.0375  cannot use diff mode with Cygwin diff.exe
+  2133  8.1.0376  compiler warning for uninitialized variable
+ 21413  8.1.0377  xdiff doesn't use the Vim memory allocation functions
+  2048  8.1.0378  CI build failure
+125615  8.1.0379  build dependencies are incomplete
+  6840  8.1.0380  "make proto" doesn't work well
+  1858  8.1.0381  variable declaration not at start of block
+  9705  8.1.0382  some make programs can't handle "xdiff/../"
+  1782  8.1.0383  missing source file rename
+  5127  8.1.0384  sign ordering depends on +netbeans feature
+  2742  8.1.0385  Coveralls badge doesn't update
+  5812  8.1.0386  cannot test with non-default option value
+  2071  8.1.0387  no test for 'ambiwidth' detection
+  1579  8.1.0388  Coverity complains about possible NULL pointer use
+  2651  8.1.0389  :behave command is not tested
+  6076  8.1.0390  scrollbars are not tested
+  2344  8.1.0391  building in a shadow directory fails
+  9049  8.1.0392  error while typing :/foo/s// with 'incsearch' enabled
+ 27803  8.1.0393  not all white space difference options available
+  6228  8.1.0394  diffs are not always updated correctly
+  1672  8.1.0395  compiler warning on 64-bit MS-Windows
+  1768  8.1.0396  another compiler warning on 64-bit MS-Windows
+ 15721  8.1.0397  no event triggered after updating diffs
+  4360  8.1.0398  no test for -o and -O command line arguments
+  8813  8.1.0399  'hlsearch' highlight remains in other window
+  2686  8.1.0400  using freed memory with :diffget
+  8652  8.1.0401  can't get swap name of another buffer
+  5092  8.1.0402  the DiffUpdate event isn't triggered for :diffput
+  1357  8.1.0403  header file missing from distribution
+  2233  8.1.0404  accessing invalid memory with long argument name
+ 68527  8.1.0405  too many #ifdefs for GTK
+  4335  8.1.0406  several command line arguments are not tested
+ 33033  8.1.0407  quickfix code mixes using the stack and a list pointer
+  7190  8.1.0408  MSVC: cannot use the "x64" native compiler option
+  3554  8.1.0409  startup test fails on MS-Windows
+  8456  8.1.0410  the ex_copen() function is too long
+  1570  8.1.0411  renamed file missing from distribution
+  2839  8.1.0412  cannot build with GTK 2.4
+  2486  8.1.0413  test output is duplicated or missing
+  3066  8.1.0414  v:option_old is cleared when using :set in OptionSet autocmd
+  4556  8.1.0415  not actually using 16 colors with vtp
+  2741  8.1.0416  sort doesn't report deleted lines
+  4674  8.1.0417  several command line arguments are not tested
+  2249  8.1.0418  MS-Windows: cannot separate Lua include and library dirs
+  1921  8.1.0419  Cygwin: running cproto fails with -O2
+  2056  8.1.0420  generating vim.lib when using ActivePerl 5.20.3 or later
+  2776  8.1.0421  MS-Windows: Ruby path is wrong for Ruby 1.9 and later
+  1647  8.1.0422  cannot create map file with MinGW
+  2704  8.1.0423  MS-Windows: using dup-close for flushing a file
+  3886  8.1.0424  test output is very verbose, loading CI log is slow
+  2891  8.1.0425  ml_get error and crash with appendbufline()
+  2598  8.1.0426  accessing invalid memory in SmcOpenConnection()
+  2361  8.1.0427  MS-Windows GUI: using invalid encoded file name
+  3757  8.1.0428  the :suspend command is not tested
+  1649  8.1.0429  no test for :lcd with 'shellslash'
+  1332  8.1.0430  Xargadd file left behind after running test
+ 15030  8.1.0431  the qf_jump() function is too long
+  1645  8.1.0432  compiler warning for signed/unsigned
+  2241  8.1.0433  mapping can obtain text from inputsecret()
+  9471  8.1.0434  copy_loclist() is too long
+  2271  8.1.0435  cursorline highlight not removed in some situation
+  2471  8.1.0436  can get the text of inputsecret() with getcmdline()
+  2119  8.1.0437  may access freed memory when syntax HL times out
+  9235  8.1.0438  the ex_make() function is too long
+ 16394  8.1.0439  recursive use of getcmdline() still not protected
+  2960  8.1.0440  remove() with a range not sufficiently tested
+  1734  8.1.0441  build failure without command line history
+  1685  8.1.0442  GUI: cursor not drawn after ":redraw | sleep"
+108558  8.1.0443  unnecessary static function prototypes
+  1546  8.1.0444  unnecessary check for NULL pointer
+  9270  8.1.0445  setting 'term' does not store location for termcap options
+  1447  8.1.0446  options test fails in the GUI
+  4197  8.1.0447  GUI scrollbar test fails with Athena and Motif
+ 12315  8.1.0448  cursorline not removed when using 'cursorbind'
+  6929  8.1.0449  when 'rnu' is set folded lines are not displayed correctly
+  2060  8.1.0450  build failure without the +fold feature
+  6235  8.1.0451  Win32 console: keypad keys don't work
+  3847  8.1.0452  MS-Windows: not finding intl.dll
+  3698  8.1.0453  MS-Windows: executable() is not reliable
+  3104  8.1.0454  resolve() was not tested with a symlink cycle
+  6496  8.1.0455  checking for empty quickfix stack is not consistent
+  3080  8.1.0456  running test hangs when the input file is being edited
+  7330  8.1.0457  win32 console: key mappings don't work
+  2997  8.1.0458  ml_get error and crash when using "do"
+  1582  8.1.0459  Test_executable fails when there is a dog in the system
+  3900  8.1.0460  assert_fails() does not take a message argument
+130449  8.1.0461  quickfix code uses too many /* */ comments
+  2953  8.1.0462  when using ConPTY Vim can be a child process
+  2527  8.1.0463  "simalt ~x" in .vimrc blocks swap file prompt
+  2848  8.1.0464  MS-Windows: job_info() has cmd without backslashes
+  1671  8.1.0465  client-server test fails
+  7829  8.1.0466  autocmd test fails
+  3658  8.1.0467  cannot build with Mac OS X 10.5
+  3212  8.1.0468  MS-Windows: filter command with pipe character fails
+ 19665  8.1.0469  too often indexing in qf_lists[]
+ 10852  8.1.0470  pointer ownership around fname_expand() is unclear
+  3488  8.1.0471  some tests are flaky or fail on some systems
+  9221  8.1.0472  dosinst command has a few flaws
+  2574  8.1.0473  user doesn't notice file does not exist when swap file does
+  5110  8.1.0474  directory where if_perl.c is written is inconsistent
+ 15480  8.1.0475  memory not freed on exit when quit in autocmd
+  3035  8.1.0476  memory leaks in test_escaped_glob
+  1255  8.1.0477  tiny build fails
+  1704  8.1.0478  cannot build with perl using MinGW
+  4319  8.1.0479  failure when setting 'varsofttabstop' to end in a comma
+  2299  8.1.0480  MinGW build file uses different -I flags than MVC
+  2186  8.1.0481  when "Terminal" highlight is reverted cursor doesn't show
+  2192  8.1.0482  MinGW "make clean" deletes all .exe files
+  2806  8.1.0483  MinGW does not build tee.exe
+  8349  8.1.0484  some file types are not recognized
+  2921  8.1.0485  term_start() does not check if directory is accessible
+  1842  8.1.0486  can't build in MS-Windows
+ 39192  8.1.0487  no menus specifically for the terminal window
+ 15995  8.1.0488  using freed memory in quickfix code
+  5140  8.1.0489  crash when autocmd clears vimpgrep location list
+  4061  8.1.0490  MS-Windows: doesn't handle missing glibwinpthread-1.dll
+  1640  8.1.0491  if a terminal dump has CR it is considered corrupt
+  3142  8.1.0492  "Edit with existing Vim" list can get long
+ 13964  8.1.0493  argv() and argc() only work on the current argument list
+  3977  8.1.0494  functions do not check for a window ID in other tabs
+  7883  8.1.0495  :filter only supports some commands
+ 11218  8.1.0496  no tests for indent files
+  3122  8.1.0497  :%diffput changes order of lines
+  3486  8.1.0498  /etc/gitconfig not recognized at a gitconfig file
+  4415  8.1.0499  :2vimgrep causes an ml_get error
+  1549  8.1.0500  cleaning up in src/tee may not always work
+  1823  8.1.0501  cppcheck warns for using array index before bounds check
+  5075  8.1.0502  internal diff fails when diffing a context diff
+  1854  8.1.0503  missing change to diff test
+  3277  8.1.0504  when CTRL-C is mapped it triggers InsertLeave
+  1858  8.1.0505  filter command test may fail if helplang is not set
+  1836  8.1.0506  modeline test fails when run by root
+  3054  8.1.0507  .raml files not properly detected
+  3099  8.1.0508  suspend test fails when run by root
+  2311  8.1.0509  checking cwd not accessible fails for root
+  2146  8.1.0510  filter test fails when $LANG is C.UTF-8
+  2370  8.1.0511  ml_get error when calling a function with a range
+  2387  8.1.0512  'helplang' default is inconsistent for C and C.UTF-8
+  2564  8.1.0513  no error for set diffopt+=algorithm:
+ 26020  8.1.0514  CTRL-W ^ does not work when alternate buffer has no name
+  8965  8.1.0515  reloading a script gives errors for existing functions
+  4755  8.1.0516  :move command marks buffer modified when nothing changed
+  1951  8.1.0517  Test_window_split_edit_alternate() fails on AppVeyor
+  2801  8.1.0518  Test_window_split_edit_bufnr() fails on AppVeyor
+ 23694  8.1.0519  cannot save and restore the tag stack
+  1717  8.1.0520  screen diff test sometimes fails
+  1657  8.1.0521  cannot build with +eval but without +quickfix
+  2564  8.1.0522  :terminal does not show trailing empty lines
+ 12244  8.1.0523  opening window from quickfix leaves empty buffer behind
+  2080  8.1.0524  terminal test fails on Windows
+  3553  8.1.0525  terminal test skips part on Windows
+  1694  8.1.0526  running out of signal stack in RealWaitForChar
+  1727  8.1.0527  using 'shiftwidth' from wrong buffer for folding
+ 27062  8.1.0528  various typos in comments
+  3431  8.1.0529  flaky test sometimes fails in different ways
+  3468  8.1.0530  channel and terminal tests that start a server can be flaky
+  2564  8.1.0531  flaky tests often fail with a common error message
+ 10477  8.1.0532  cannot distinguish between quickfix and location list
+  1607  8.1.0533  screendump tests can be flaky
+ 10454  8.1.0534  MS-Windows installer uses different $HOME than Vim
+  2589  8.1.0535  increment/decrement might get interrupted by updating folds
+  2944  8.1.0536  file time test fails when using NFS
+  2151  8.1.0537  ui_breakcheck() may be called recursively
+  1629  8.1.0538  evaluating a modeline might invoke using a shell command
+  3595  8.1.0539  cannot build without the sandbox
+  3752  8.1.0540  may evaluate insecure value when appending to option
+  2844  8.1.0541  help message in dosinst.c is outdated
+ 13399  8.1.0542  shiftwidth() does not take 'vartabstop' into account
+  2020  8.1.0543  Coverity warns for leaking memory and using wrong struct
+ 13034  8.1.0544  setting 'filetype' in a modeline causes an error
+  2290  8.1.0545  when executing indent tests user preferences interfere
+  1370  8.1.0546  modeline test with keymap fails
+  1459  8.1.0547  modeline test with keymap still fails
+  1682  8.1.0548  crash when job callback unloads a buffer
+  3892  8.1.0549  netbeans test depends on README.txt contents
+  3590  8.1.0550  expression evaluation may repeat an error message
+  2045  8.1.0551  expression evaluation may repeat an error message
+  3711  8.1.0552  saved last search pattern may not be restored
+  6225  8.1.0553  it is not easy to edit a script that was sourced
+  4062  8.1.0554  popup menu overlaps with preview window
+  2343  8.1.0555  crash when last search pat is set but not last substitute pat
+  3947  8.1.0556  saving/restoring search patterns share saved last_idx
+ 16010  8.1.0557  Termdebug: gdb may use X.Y for breakpoint number
+  7059  8.1.0558  some MS-Windows instructions are outdated
+  3535  8.1.0559  command line completion not sufficiently tested
+  4527  8.1.0560  cannot use address type "other" with with user command
+  1987  8.1.0561  MSCV error format has changed
+  7029  8.1.0562  parsing of 'diffopt' is slightly wrong
+  1734  8.1.0563  setting v:errors to a string give confusing error
+  2097  8.1.0564  setting v:errors to wrong type still possible
+  1779  8.1.0565  asan complains about reading before allocated block
+  2201  8.1.0566  SGR not enabled for mintty because $TERM is "xterm"
+  1986  8.1.0567  error for NUL byte in ScreenLines goes unnoticed
+  2214  8.1.0568  error message for NUL byte in ScreenLines breaks Travis CI
+  3027  8.1.0569  execute() always resets display column to zero
+  4021  8.1.0570  'commentstring' not used when adding fold marker
+  3527  8.1.0571  non-silent execute() resets display column to zero
+  2180  8.1.0572  stopping a job does not work properly on OpenBSD
+  9154  8.1.0573  cannot redefine user command without ! in same script
+  3955  8.1.0574  'commentstring' not used when adding fold marker in C
+ 10330  8.1.0575  Termdebug: clearing multi-breakpoint does not work
+  2167  8.1.0576  indent script tests pick up installed scripts
+  5482  8.1.0577  tabpage right-click menu never shows "Close tab"
+  8465  8.1.0578  cannot disable arabic, rightleft and farsi in configure
+ 74440  8.1.0579  cannot attach properties to text
+  1447  8.1.0580  invalid memory access when using text properties
+  1833  8.1.0581  double free without the text properties feature
+  5788  8.1.0582  text properties are not enabled
+ 20840  8.1.0583  using illogical name for get_dict_number()/get_dict_string()
+  2474  8.1.0584  with search CTRL-L does not pick up composing characters
+  1787  8.1.0585  undo test may fail on MS-Windows
+ 22698  8.1.0586  :digraph output is not easy to read
+  2232  8.1.0587  GvimExt: realloc() failing is not handled properly
+  2976  8.1.0588  cannot define a sign with space in the text
+  2659  8.1.0589  compilation error in gvimext.cpp
+  6439  8.1.0590  when a job ends the closed channels are not handled
+  1765  8.1.0591  channel sort test is flaky
+  2767  8.1.0592  the libvterm tests are not run as part of Vim tests
+  2936  8.1.0593  illegal memory access in libvterm test
+  1931  8.1.0594  libvterm tests fail to run on Mac
+  7523  8.1.0595  libvterm tests are not run with coverage
+  4846  8.1.0596  not all parts of printf() are tested
+  2414  8.1.0597  cannot run test_libvterm from the top directory
+  2131  8.1.0598  indent tests may use the wrong Vim binary
+  2250  8.1.0599  without the +eval feature the indent tests don't work
+  1445  8.1.0600  channel test is flaky
+  4646  8.1.0601  a few compiler warnings
+  8027  8.1.0602  DirChanged is also triggered when directory didn't change
+  2961  8.1.0603  the :stop command is not tested
+  2292  8.1.0604  autocommand test fails on MS-Windows
+  2192  8.1.0605  running make in the top directory echoes a comment
+  3238  8.1.0606  'cryptmethod' defaults to a very old method
+  7182  8.1.0607  proto files are not in sync with the source code
+  1976  8.1.0608  coverals is not updating
+  3794  8.1.0609  MS-Windows: unused variable, depending on the Ruby version
+  5120  8.1.0610  MS-Windows ctags file list differs from Unix
+  1607  8.1.0611  crash when using terminal with long composing characters
+ 10131  8.1.0612  cannot use two global runtime dirs with configure
+  4845  8.1.0613  when executing an insecure function the secure flag is stuck
+111218  8.1.0614  placing signs can be complicated
+223182  8.1.0615  get_tv function names are not consistent
+2845493 8.1.0616  NSIS installer is outdated
+  1645  8.1.0617  NSIS installer gets two files from the wrong directory
+  2345  8.1.0618  term_getjob() does not return v:null as documented
+  9641  8.1.0619  :echomsg and :echoerr do not handle List and Dict
+  2828  8.1.0620  overuling CONF_ARGS from the environment no longer works
+  3939  8.1.0621  terminal debugger does not handle unexpected debugger exit
+  5173  8.1.0622  adding quickfix items marks items as valid errors
+ 17854  8.1.0623  iterating through window frames is repeated
+  1971  8.1.0624  overuling CONF_ARGS from the environment still does not work
+  2104  8.1.0625  MS-Windows: terminal test fails in white console
+  2084  8.1.0626  MS-Windows: no resize to fit parent when using --windowid
+  4595  8.1.0627  Python cannot handle function name of script-local function
+  1448  8.1.0628  Compiler warning on MS-Windows.
+ 14330  8.1.0629  "gn" selects the wrong text with a multi-line match
+  3679  8.1.0630  "wincmd p" does not work after using an autocmd window 
+  2256  8.1.0631  test for :stop fails on Arch
+ 27904  8.1.0632  using sign group names is inefficient
+ 11580  8.1.0633  crash when out of memory while opening a terminal window
+ 16046  8.1.0634  text properties cannot cross line boundaries
+  1571  8.1.0635  Coverity complains about null pointer use
+  9826  8.1.0636  line2byte() gives wrong values with text properties
+  1851  8.1.0637  nsis file no longer used
+  6807  8.1.0638  text property highlighting is off by one column
+  1534  8.1.0639  text properties test fails on MS-Windows
+  2888  8.1.0640  get E14 while typing command :tab with 'incsearch' set
+  1811  8.1.0641  no check for out-of-memory when converting regexp
+  5219  8.1.0642  swapinfo() leaks memory
+  2518  8.1.0643  computing byte offset wrong
+ 14318  8.1.0644  finding next sign ID is inefficient
+  1377  8.1.0645  Coverity warns for possible use of NULL pointer
+  2766  8.1.0646  cannot build with Ruby 2.6.0
+  8079  8.1.0647  MS-Windows: balloon_show() does not handle wide characters
+  6503  8.1.0648  custom operators can't act upon a forced motion
+  3823  8.1.0649  setjmp() variables defined globally are used in one file
+  3252  8.1.0650  command line argument -q [errorfile] is not tested
+  2172  8.1.0651  :args \"foo works like :args without argument
+  4416  8.1.0652  freeing memory for balloon eval too early
+  1643  8.1.0653  arglist test fails on MS-windows
+ 12277  8.1.0654  when deleting a line text property flags are not adjusted
+ 12567  8.1.0655  when appending a line text property flags are not added
+  3082  8.1.0656  trying to reconnect to X server may cause problems
+  1663  8.1.0657  get error for using regexp recursively
+ 48845  8.1.0658  deleting signs and completion for :sign is insufficient
+  2270  8.1.0659  (after 8.1.0658) build failure without the sign feature
+  5923  8.1.0660  sign_unplace() may leak memory
+  3091  8.1.0661  clipboard regexp might be used recursively
+  1546  8.1.0662  needlessly searching for tilde in string
+  2173  8.1.0663  text property display wrong when 'number' is set 
+  6447  8.1.0664  configure "fail-if-missing" does not apply to enable-gui
+  7054  8.1.0665  text property display wrong when 'spell' is set
+  1901  8.1.0666  (after 8.1.0665) text property test fails
+  1436  8.1.0667  (after 8.1.0665) textprop test leaves file behind
+  2380  8.1.0668  no test for overstrike mode in the command line
+ 21392  8.1.0669  the ex_sign() function is too long
+  1326  8.1.0670  macro for popup menu width is unused
+  6891  8.1.0671  cursor in the wrong column after auto-formatting
+  3083  8.1.0672  the Lua interface doesn't know about v:null
+108706  8.1.0673  functionality for signs is spread out over several files
+  1534  8.1.0674  leaking memory when updating a single line
+ 25118  8.1.0675  text property column in screen columns is not practical
+  2375  8.1.0676  textprop screendump test fails
+  1682  8.1.0677  look-behind match may use the wrong line number
+ 10343  8.1.0678  text properties as not adjusted for inserted text
+  9236  8.1.0679  sign functions do not take buffer argument as documented
+  2013  8.1.0680  not easy to see what features are unavailable
+  4609  8.1.0681  text properties as not adjusted for deleted text
+  8249  8.1.0682  text properties not adjusted when backspacing replaced text
+  1569  8.1.0683  spell highlighting does not always end
+  4482  8.1.0684  warnings from 64-bit compiler
+ 12362  8.1.0685  get_buf_tv() is named inconsistently
+  3369  8.1.0686  when 'y' is in 'cpoptions' yanking for clipboard changes redo
+  2550  8.1.0687  sentence text object in Visual mode is not tested
+ 25698  8.1.0688  text properties are not restored by undo
+  2967  8.1.0689  undo with text properties not tested
+  2881  8.1.0690  setline() and setbufline() do not clear text properties
+ 14795  8.1.0691  text properties are not adjusted for :substitute
+  4753  8.1.0692  if a buffer was deleted a channel can't write to it
+  2878  8.1.0693  channel test fails sometimes
+  2871  8.1.0694  when using text props may free memory that is not allocated
+  5480  8.1.0695  internal error when using :popup
+  3829  8.1.0696  when test_edit fails 'insertmode' may not be reset
+ 25979  8.1.0697  ":sign place" requires the buffer argument
+  3901  8.1.0698  clearing the window is used too often
+  1529  8.1.0699  compiler warning for uninitialized variable
+  1400  8.1.0700  using "gt" sometimes does not redraw a tab
+ 12245  8.1.0701  sign message not translated and inconsistent spacing
+  4245  8.1.0702  ":sign place" only uses the current buffer
+  2917  8.1.0703  compiler warnings with 64-bit compiler
+  1805  8.1.0704  building with Ruby 2.6 gives compiler warnings
+  2073  8.1.0705  :colorscheme isn't tested enough
+ 10220  8.1.0706  tabline is not always redrawn
+  4523  8.1.0707  text property columns are not adjusted for changed indent
+  5125  8.1.0708  third argument for redrawWinline() is always FALSE
+  9751  8.1.0709  windows are updated for every added/deleted sign
+  5478  8.1.0710  when using timers may wait for job exit quite long
+ 88709  8.1.0711  test files still use function!
+ 11228  8.1.0712  MS-Windows build instructions are a bit outdated
+2879878 8.1.0713  images for NSIS take up too much space
+  3787  8.1.0714  unessesary #if lines in GTK code
+  1748  8.1.0715  superfluous call to redraw_win_later()
+  8517  8.1.0716  get warning message when 'completefunc' returns nothing
+ 22574  8.1.0717  there is no function for the ":sign jump" command
+  2555  8.1.0718  a couple compiler warnings
+ 16561  8.1.0719  too many #ifdefs
+ 18271  8.1.0720  cannot easily change the current quickfx list index
+ 24146  8.1.0721  conceal mode is not sufficiently tested
+  4462  8.1.0722  cannot build without the virtualedit feature
+ 25260  8.1.0723  cannot easily run specific test when in src/testdir
+  2775  8.1.0724  build for MinGW fails
+  5440  8.1.0725  conceal mode is not completely tested
+  9198  8.1.0726  redrawing specifically for conceal feature
+  1636  8.1.0727  compiler warning for sprintf() argument
+  6031  8.1.0728  cannot avoid breaking after a single space.
+  6207  8.1.0729  there is a SourcePre autocommand event but not a SourcePost
+  1467  8.1.0730  compiler warning for get_buf_arg() unused
+  7330  8.1.0731  JS encoding does not handle negative infinity
+  1945  8.1.0732  cannot build without the eval feature
+ 15261  8.1.0733  too many #ifdefs for the multi-byte feature
+  2368  8.1.0734  the hlsearch state is not stored in a session file
+ 93900  8.1.0735  cannot handle binary data
+ 21855  8.1.0736  code for Blob not sufficiently tested
+  1536  8.1.0737  compiler warning for uninitialized variable
+  2685  8.1.0738  using freed memory, for loop over blob leaks memory
+  4939  8.1.0739  text objects in not sufficiently tested
+  1627  8.1.0740  Tcl test fails
+  7882  8.1.0741  viminfo with Blob is not tested
+  5228  8.1.0742  not all Blob operations are tested
+695671  8.1.0743  giving error messages is not flexible
+  6693  8.1.0744  compiler warnings for signed/unsigned strings
+  2088  8.1.0745  compiler warnings for signed/unsigned string
+  5138  8.1.0746  highlighting not updated with conceal and 'cursorline'
+  4041  8.1.0747  map() with a bad expression doesn't give an error
+  4379  8.1.0748  using sprintf() instead of semsg()
+  1939  8.1.0749  error message contains garbage
+  3401  8.1.0750  when the last sign is deleted the signcolumn may remain
+  1646  8.1.0751  some regexp errors are not tested
+  1527  8.1.0752  one more compiler warning for signed/unsigned string
+ 14694  8.1.0753  printf format not checked for semsg()
+  2598  8.1.0754  preferred column is lost when setting 'cursorcolumn'
+  2909  8.1.0755  error message for get() on a Blob with invalid index
+  2516  8.1.0756  copy() does not make a copy of a Blob
+ 11449  8.1.0757  not enough documentation for Blobs
+  1885  8.1.0758  font number is always one instead of the actual
+ 14841  8.1.0759  showing two characters for tab is limited
+  7829  8.1.0760  no proper test for using 'termencoding'
+  1656  8.1.0761  default value for brief_wait is wrong
+  1629  8.1.0762  compiler warning
+146961  8.1.0763  nobody is using the Sun Workshop support
+  2241  8.1.0764  list of distributed files is outdated
+  5262  8.1.0765  string format of a Blob can't be parsed back
+ 24279  8.1.0766  various problems when using Vim on VMS
+  5124  8.1.0767  when deleting lines at the bottom signs are misplaced
+  8147  8.1.0768  updating completions may cause the popup menu to flicker
+  3416  8.1.0769  :stop is covered in two tests
+  6869  8.1.0770  inconsistent use of ELAPSED_FUNC
+  7093  8.1.0771  some shell filetype patterns end in a star
+  7973  8.1.0772  the sign_define_by_name() function is too long
+  7896  8.1.0773  not all crypt code is tested
+  7676  8.1.0774  VMS build is missing the blob file
+  3420  8.1.0775  matching too many files as zsh
+  2307  8.1.0776  Travis does not build a version without GUI on Linux
+  5010  8.1.0777  Win32: using pipes for channel does not work well
+  1656  8.1.0778  terminal test fails on MS-Windows
+209043  8.1.0779  argument for message functions is inconsistent
+  1604  8.1.0780  terminal test fails on Mac
+  1584  8.1.0781  build error when using if_xcmdsrv.c
+  2424  8.1.0782  Win32: cursor blinks when Vim is not active
+  2756  8.1.0783  compiler warning for signed/unsigned
+  3266  8.1.0784  messy indent in if statement
+ 23781  8.1.0785  depending on the configuration some functions are unused
+  4406  8.1.0786  ml_get error when updating the status line
+  3765  8.1.0787  compiler warning for unused function
+  6190  8.1.0788  cannot build with tiny features
+  2277  8.1.0789  sourcing a session sets v:errmsg
+  2320  8.1.0790  code for creating tabpages in session is too complex
+  2441  8.1.0791  a few compiler warnings on VMS
+  2632  8.1.0792  bad display if opening cmdline window from Insert completion
+ 13053  8.1.0793  incorrect error messages for functions that take a Blob
+  2119  8.1.0794  white space before " -Ntabmove" causes problems
+  1531  8.1.0795  cannot build without popup menu
+  2678  8.1.0796  MS-Windows 7: problem with named pipe on channel
+  3399  8.1.0797  error E898 is used twice
+  5792  8.1.0798  changing a blob while iterating over it works strangely
+  3673  8.1.0799  calling deleted function; test doesn't work on Mac
+  2461  8.1.0800  may use a lot of memory when a function refers itself
+  1774  8.1.0801  MinGW: no hint that tests fail because of small terminal
+  4055  8.1.0802  negative index doesn't work for Blob
+  2695  8.1.0803  session file has problem with single quote in file name
+  2498  8.1.0804  crash when setting v:errmsg to empty list
+169444  8.1.0805  too many #ifdefs
+168573  8.1.0806  too many #ifdefs
+  1537  8.1.0807  session test fails on MS-Windows
+  1712  8.1.0808  MS-Windows: build error with GUI
+130242  8.1.0809  too many #ifdefs
+129728  8.1.0810  too many #ifdefs
+ 52979  8.1.0811  too many #ifdefs
+  5050  8.1.0812  Unicode 16 feature is not useful
+  3806  8.1.0813  FileChangedShell not sufficiently tested
+  7655  8.1.0814  :mksession cannot handle a very long 'runtimepath'
+ 13274  8.1.0815  dialog for file changed outside of Vim not tested
+  1626  8.1.0816  test for 'runtimepath' in session fails on MS-Windows
+  2659  8.1.0817  ":=" command is not tested
+  5081  8.1.0818  MS-Windows: cannot send large data with ch_sendraw()
+  5999  8.1.0819  a failed assert with a long string is hard to read
+ 11935  8.1.0820  test for sending large data over channel sometimes fails
+  7589  8.1.0821  xxd "usage" output and other arguments not tested
+  4371  8.1.0822  peeking and flushing output slows down execution
+  2885  8.1.0823  not sufficient testing of xxd
+ 16554  8.1.0824  SunOS/Solaris has a problem with ttys
+160801  8.1.0825  code for autocommands is mixed with file I/O code
+ 79548  8.1.0826  too many #ifdefs
+  2331  8.1.0827  missing dependency in Makefile
+  1764  8.1.0828  still using FEAT_VIRTUALEDIT
+  3964  8.1.0829  when 'hidden' is set session creates extra buffers
+  1667  8.1.0830  test leaves directory behind on MS-Windows
+  3435  8.1.0831  xxd test fails if man page has dos fileformat
+  3286  8.1.0832  confirm() is not tested
+  1419  8.1.0833  memory leak when jumps output is filtered
+ 19328  8.1.0834  GUI may wait too long before dealing with messages
+  1717  8.1.0835  GUI build fails on MS-Windows
+  2075  8.1.0836  user completion test can fail on MS-Windows
+  5401  8.1.0837  timer interrupting cursorhold and mapping not tested
+  1877  8.1.0838  compiler warning for type conversion
+  1660  8.1.0839  when using VTP wrong colors after a color scheme change
+  6189  8.1.0840  getchar(0) never returns a character in the terminal
+  2400  8.1.0841  travis config to get Lua on MacOS is too complicated
+  2229  8.1.0842  getchar_zero test fails on MS-Windows
+  2663  8.1.0843  memory leak when running "make test_cd"
+  2082  8.1.0844  when timer fails test will hang forever
+  9689  8.1.0845  having job_status() free the job causes problems
+ 10132  8.1.0846  not easy to recognize the system Vim runs on
+  2469  8.1.0847  may use terminal after it was cleaned up
+  1665  8.1.0848  cannot build with Ruby 1.8
+  3979  8.1.0849  cursorline highlight is not always updated
+  4047  8.1.0850  test for 'backupskip' is not correct
+  4451  8.1.0851  feedkeys() with "L" does not work properly
+  8567  8.1.0852  findfile() and finddir() are not properly tested
+  2021  8.1.0853  options test fails on Mac
+  7452  8.1.0854  xxd does not work with more than 32 bit addresses
+  1878  8.1.0855  cannot build xxd with MSVC 10
+  3082  8.1.0856  when scrolling a window the cursorline is not always updated
+263547  8.1.0857  indent functionality is not separated
+  5294  8.1.0858  'indentkeys' and 'cinkeys' defaults are different
+  4559  8.1.0859  "%v" in 'errorformat' does handle multi-byte characters
+  1577  8.1.0860  debug lines left in the code
+  1546  8.1.0861  building with MinGW and static libc doesn't work
+ 10042  8.1.0862  no verbose version of character classes
+  5849  8.1.0863  cannot see what signal caused a job to end
+ 37593  8.1.0864  cannot have a local value for 'scrolloff' and 'sidescrolloff'
+  2879  8.1.0865  when 'listchars' only contains "nbsp:X" it does not work
+  9652  8.1.0866  build file dependencies are outdated
+  4845  8.1.0867  cannot build Python interface with Python 2.4
+  1848  8.1.0868  crash if triggering garbage collector after a function call
+ 18955  8.1.0869  Travis CI script is too complicated
+ 47967  8.1.0870  Vim doesn't use the new ConPTY support in Windows 10
+  1446  8.1.0871  build error when building with Ruby 2.6.0
+  1683  8.1.0872  confusing condition
+  1593  8.1.0873  list if distributed files does not include matchit autoload
+158253  8.1.0874  using old style comments in new file
+  3442  8.1.0875  not all errors of marks and findfile()/finddir() are tested
+  2056  8.1.0876  completion match not displayed when popup menu is not shown
+ 10004  8.1.0877  new buffer used every time the quickfix window is opened
+  1769  8.1.0878  test for has('bsd') fails on some BSD systems
+  1843  8.1.0879  MS-Windows: temp name encoding can be wrong
+ 30820  8.1.0880  MS-Windows: inconsistent selection of winpty/conpty
+ 13095  8.1.0881  can execute shell commands in rvim through interfaces
+  1403  8.1.0882  checking for FEAT_MBYTE which doesn't exist anymore
+  7430  8.1.0883  missing some changes for Ex commands
+  1665  8.1.0884  double check for bsd systems
+  1510  8.1.0885  test for restricted hangs on MS-Windows GUI
+  3645  8.1.0886  compiler warning for NULL pointer and condition always true
+  3192  8.1.0887  the 'l' flag in :subsitute is sticky
+ 10420  8.1.0888  the a: dict is not immutable as documented
+  3538  8.1.0889  MS-Windows: a channel write may hang
+  6691  8.1.0890  pty allocation wrong if using file for out channel
+  4312  8.1.0891  substitute command inssuficiently tested
+ 14682  8.1.0892  failure when closing a window when location list is in use
+  1677  8.1.0893  terminal test is a bit flaky
+ 13459  8.1.0894  MS-Windows: resolve() does not return a reparse point
+  3966  8.1.0895  MS-Windows: dealing with temp name encoding not quite right
+  3159  8.1.0896  tests for restricted mode not run for MS-Windows GUI
+ 19290  8.1.0897  can modify a:000 when using a reference
+  2386  8.1.0898  a messed up rgb.txt can crash Vim
+  1418  8.1.0899  no need to check restricted mode for setwinvar()
+  2498  8.1.0900  ConPTY many crash with 32-bit build
+  3675  8.1.0901  index in getjumplist() may be wrong
+ 13906  8.1.0902  incomplete set of assignment operators
+  2195  8.1.0903  struct uses more bytes than needed
+  4947  8.1.0904  USE_LONG_FNAME never defined
+  9955  8.1.0905  complicated regexp causes a crash
+  2066  8.1.0906  using clumsy way to get console window handle
+  1671  8.1.0907  CI tests on AppVeyor are failing
+  2283  8.1.0908  can't handle large value for %{nr}v in regexp
+  5447  8.1.0909  MS-Windows: using ConPTY even though it is not stable
+  4043  8.1.0910  crash with tricky search pattern
+  5088  8.1.0911  tag line with Ex command cannot have extra fields
+  2408  8.1.0912  MS-Windows: warning for signed/unsigned
+  3460  8.1.0913  CI crashes when running out of memory
+170148  8.1.0914  code related to findfile() is spread out
+  5083  8.1.0915  fsync() may not work properly on Mac
+  4627  8.1.0916  with Python 3.7 "find_module" is not made available
+  2184  8.1.0917  double free when running out of memory
+ 10678  8.1.0918  MS-Windows: startup messages are not converted
+  2646  8.1.0919  compiler warnings
+ 14433  8.1.0920  in Terminal-Normal mode job output messes up the window
+  4270  8.1.0921  terminal test sometimes fails; using memory after free
+  5083  8.1.0922  terminal scrollback test is flaky
+  3820  8.1.0923  terminal dump diff swap does not update file names
+  2123  8.1.0924  terminal scrollback test still flaky
+  5849  8.1.0925  terminal scrollback test still still flaky
+  4714  8.1.0926  no test for :wnext, :wNext and :wprevious
+ 18921  8.1.0927  USE_CR is never defined
+  1537  8.1.0928  stray log function call
+  4756  8.1.0929  no error when requesting ConPTY but it's not available
+  2589  8.1.0930  typo in Makefile
+  2569  8.1.0931  vtp_working included in GUI build but unused
+267904  8.1.0932  Farsi support is outdated and unused
+ 14246  8.1.0933  When using VTP scroll region isn't used properly
+  2112  8.1.0934  invalid memory access in search pattern
+  2146  8.1.0935  old regexp engine may use invalid buffer
+  3916  8.1.0936  may leak memory when using 'vartabstop'
+  2146  8.1.0937  invalid memory access in search pattern
+  1860  8.1.0938  background color is wrong in MS-Windows console
+ 12857  8.1.0939  no completion for sign group names
+  5938  8.1.0940  MS-Windows console resizing not handled properly
+226163  8.1.0941  macros for MS-Windows are inconsistent
+  6305  8.1.0942  options window still checks for the multi_byte feature
+  2152  8.1.0943  still a trace of Farsi support
+  4158  8.1.0944  format of nbdbg() arguments is not checked
+  3084  8.1.0945  internal error when using pattern with NL in the range
+  3244  8.1.0946  Coveralls is not very useful
+  2615  8.1.0947  using MSWIN before it is defined
+  2829  8.1.0948  when built without +eval "Vim --clean" produces errors
+ 11287  8.1.0949  MS-windows defines GUI macros different than other systems
+  3724  8.1.0950  using :python sets 'pyxversion' even when not executed
+  1603  8.1.0951  using WIN64 even though it is never defined
+  5876  8.1.0952  compilation warnings when building the MS-Windows installer
+  3173  8.1.0953  a very long file is truncated at 2^31 lines
+  3607  8.1.0954  arguments of semsg() and siemsg() are not checked
+  1658  8.1.0955  matchit autoload directory not in installer
+ 10434  8.1.0956  using context:0 in 'diffopt' does not work well
+  1611  8.1.0957  Mac: fsync fails on network share
+  7099  8.1.0958  compiling weird regexp pattern is very slow
+  5706  8.1.0959  sorting large numbers is not tested
+  3835  8.1.0960  when using ConPTY garbage collection has undefined behavior
+  1555  8.1.0961  Mac: fsync may fail sometimes
+  1503  8.1.0962  building with MinGW and static libs doesn't work
+  3106  8.1.0963  illegal memory access when using 'incsearch'
+  2270  8.1.0964  cannot see in CI why a screenshot test failed
+  2260  8.1.0965  search test fails
+  1507  8.1.0966  one terminal test is flaky
+  1679  8.1.0967  stray dependency in test Makefile
+  2081  8.1.0968  crash when using search pattern \%Ufffffc23
+  2159  8.1.0969  message written during startup is truncated
+  2597  8.1.0970  text properties test fails when 'encoding' is not utf-8
+  7477  8.1.0971  failure for selecting quoted text object moves cursor
+  4056  8.1.0972  cannot switch from terminal window to next tabpage
+  3956  8.1.0973  pattern with syntax error gives threee error messages
+  4784  8.1.0974  cannot switch from terminal window to previous tabpage
+  3689  8.1.0975  using STRNCPY() wrongly. Warning for uninitialized variable
+ 12842  8.1.0976  dosinstall still has buffer overflow problems
+  2932  8.1.0977  blob not tested with Ruby
+  2284  8.1.0978  blob not tested with Perl
+  1689  8.1.0979  compiler warning for unused functions
+  4464  8.1.0980  extend() insufficiently tested
+  1864  8.1.0981  pasting in terminal insufficiently tested
+  1928  8.1.0982  update_cursor() called twice in :shell
+  3804  8.1.0983  checking __CYGWIN32__ unnecessarily
+  4627  8.1.0984  unnecessary #ifdefs
+  3296  8.1.0985  crash with large number in regexp
+  6142  8.1.0986  rename() is not propertly tested
+  2122  8.1.0987  unnecessary condition in #ifdef
+  4470  8.1.0988  deleting location list buffer breaks location list window
+ 17243  8.1.0989  various small code ugliness
+  6273  8.1.0990  floating point exception with "%= 0" and "/= 0"
+  2306  8.1.0991  cannot build with a mix of features
+  4377  8.1.0992  a :normal command resets the reg_executing() result
+  7697  8.1.0993  ch_read() may return garbage if terminating NL is missing
+  8342  8.1.0994  relative cursor position is not calculated correctly
+  2880  8.1.0995  a getchar() call resets the reg_executing() result
+  3591  8.1.0996  a few screendump tests fail because of scrolling
+  1488  8.1.0997  using GUI colors in vim.exe when 'termguicolors' is off
+  2591  8.1.0998  getcurpos() unexpectedly changes "curswant"
+  5001  8.1.0999  use register one too often and not properly tested
+ 11973  8.1.1000  indenting is off
+  3798  8.1.1001  Visual area not correct when using 'cursorline'
+  3552  8.1.1002  "gf" does not always work when URL has a port number
+  2427  8.1.1003  playing back recorded key sequence mistakes key code
+  1556  8.1.1004  function "luaV_setref()" not covered with tests
+  2062  8.1.1005  test fails because t_F2 is not set
+ 19270  8.1.1006  repeated code in quickfix support
+ 16974  8.1.1007  using closure may consume a lot of memory
+  1766  8.1.1008  MS-Windows: HAVE_STDINT_H only defined for non-debug version
+  1776  8.1.1009  MS-Windows: some text is not baseline aligned
+  2554  8.1.1010  Lua interface leaks memory
+  2415  8.1.1011  indent from autoindent not removed from blank line
+  1347  8.1.1012  memory leak with E461
+  3869  8.1.1013  MS-Windows: Scrolling fails when dividing the screen
+  1968  8.1.1014  MS-Windows: /analyze only defined for non-debug version
+ 16056  8.1.1015  quickfix buffer shows up in list, can't get buffer number
+  5067  8.1.1016  MS-Windows: No color in shell when using "!" in 'guioptions
+  3468  8.1.1017  off-by-one error in filetype detection
+  1773  8.1.1018  window cleared when entering Terminal-Normal twice
+ 16823  8.1.1019  Lua: may garbage collect function reference in use
+  1762  8.1.1020  compiler warning for Python3 interface
+  4050  8.1.1021  pyeval() and py3eval() leak memory
+  1374  8.1.1022  may use NULL pointer when out of memory
+  1578  8.1.1023  may use NULL pointer when indexing a blob
+  1901  8.1.1024  stray log calls in terminal code
+  1843  8.1.1025  checking NULL pointer after addition
+  4391  8.1.1026  unused condition
+  1700  8.1.1027  memory usage test sometimes fails
+  1402  8.1.1028  MS-Windows: memory leak when creating terminal fails
+  2329  8.1.1029  DirectWrite doesn't take 'linespace' into account
+ 24096  8.1.1030  quickfix function arguments are inconsistent
+  3671  8.1.1031  memory usage test may still fail
+ 11462  8.1.1032  warnings from clang static analyzer
+  1834  8.1.1033  memory usage test may still fail on some systems
+ 12301  8.1.1034  too many #ifdefs
+  6377  8.1.1035  prop_remove() second argument is not optional
+  6723  8.1.1036  quickfix function arguments are inconsistent
+  1846  8.1.1037  memory usage test may still fail on some systems
+ 96322  8.1.1038  Arabic support excludes Farsi
+ 40423  8.1.1039  MS-Windows build fails
+  6022  8.1.1040  FEAT_TAG_ANYWHITE is not enabled in any build
+  2809  8.1.1041  test for Arabic no longer needed
+  1671  8.1.1042  the paste test doesn't work properly in the Windows console
+ 19649  8.1.1043  Lua interface does not support Blob
+  9667  8.1.1044  no way to check the reference count of objects
+  7527  8.1.1045  E315 ml_get error when using Python and hidden buffer
+  2627  8.1.1046  the "secure" variable is used inconsistently
+  2844  8.1.1047  WINCH signal is not tested
+  4571  8.1.1048  minor issues with tests
+  3634  8.1.1049  when user tries to exit with CTRL-C message is confusing
+  1626  8.1.1050  blank srceen when DirectWrite failed
+  2326  8.1.1051  not all ways to switch terminal mode are tested
+  1703  8.1.1052  test for CTRL-C message sometimes fails
+  1320  8.1.1053  warning for missing return statement
+  2032  8.1.1054  not checking return value of ga_grow()
+  8364  8.1.1055  CTRL-G U in Insert mode doesn't work for shift-Left
+ 49686  8.1.1056  no eval function for Ruby
+  2811  8.1.1057  nsis config is too complicated
+  2108  8.1.1058  memory usage test may still fail on some systems
+  2095  8.1.1059  MS-Windows: PlatformId() is called unnecessarily
+  7334  8.1.1060  MS-Windows: get_cmd_args() is no longer needed
+  3310  8.1.1061  when substitute string throws error, substitute happens anyway
+ 17335  8.1.1062  quickfix code is repeated
+  3443  8.1.1063  insufficient testing for wildmenu completion
+  1742  8.1.1064  no test for output conversion in the GTK GUI
+  1704  8.1.1065  no test for using and deleting menu in the GUI
+  8278  8.1.1066  VIMDLL isn't actually used
+  3239  8.1.1067  issues added on github are unstructured
+ 19969  8.1.1068  cannot get all the information about current completion
+ 15120  8.1.1069  source README file doesn't look nice on github
+  4765  8.1.1070  issue templates are not good enough
+ 10316  8.1.1071  cannot get composing characters from the screen
+ 86042  8.1.1072  extending sign and foldcolumn below the text is confusing
+  4243  8.1.1073  space in number column is on wrong side with 'rightleft' set
+  5893  8.1.1074  Python test doesn't wipe out hidden buffer
+  1638  8.1.1075  function reference count wrong in Python code
+269910  8.1.1076  file for Insert mode is much too big
+  4106  8.1.1077  reg_executing() is reset by calling input()
+  3611  8.1.1078  when 'listchars' is set a composing char on a space is wrong
+  3499  8.1.1079  no need for a separate ScreenLinesUtf8() test function
+  2313  8.1.1080  when a screendump test fails, moving the file is a hassle
+ 32417  8.1.1081  MS-Windows: cannot use some fonts
+  2521  8.1.1082  "Conceal" match is mixed up with 'hlsearch' match.
+  8977  8.1.1083  MS-Windows: hang when opening a file on network share
+ 20398  8.1.1084  cannot delete a match from another window
+  2252  8.1.1085  compiler warning for possibly uninitialized variable
+ 37426  8.1.1086  too many curly braces
+  4548  8.1.1087  tag stack is incorrect after CTRL-T and then :tag
+  3079  8.1.1088  height of quickfix window not retained with vertical split
+  3969  8.1.1089  tutor does not check $LC_MESSAGES
+  2449  8.1.1090  MS-Windows: modify_fname() has problems with some 'encoding'
+  5103  8.1.1091  MS-Windows: cannot use multi-byte chars in environment var
+  3320  8.1.1092  setting 'guifont' when maximized resizes the Vim window
+ 10019  8.1.1093  support for outdated tags format slows down tag parsing
+  4966  8.1.1094  long line in tags file causes error
+  3585  8.1.1095  MS-Windows: executable() fails on very long filename
+  2445  8.1.1096  MS-Windows: cannot distinguish BS and CTRL-H
+  2244  8.1.1097  Motif build fails
+ 11277  8.1.1098  quickfix code duplication
+ 36025  8.1.1099  the do_tag() function is too long
+  2583  8.1.1100  tag file without trailing newline no longer works
+  1533  8.1.1101  signals test may fail in the GUI
+  3131  8.1.1102  Win32 exe file contains unused code
+110822  8.1.1103  MS-Windows: old API calls are no longer needed
+  6177  8.1.1104  MS-Windows: not all environment variables can be used
+  3520  8.1.1105  long escape sequences may be split up
+  1700  8.1.1106  no test for 'writedelay'
+  1512  8.1.1107  no test for 'visualbell'
+  1308  8.1.1108  test for 'visualbell' doesn't work
+  1356  8.1.1109  deleted file still in list of distributed files
+  5161  8.1.1110  composing chars on space wrong when 'listchars' is set
+  5153  8.1.1111  it is not easy to check for infinity
+ 13102  8.1.1112  duplicate code in quickfix file
+ 12932  8.1.1113  making an autocommand trigger once is not so easy
+  8005  8.1.1114  confusing overloaded operator "." for string concatenation
+  2878  8.1.1115  cannot build with older C compiler
+ 26599  8.1.1116  cannot enforce a Vim script style
+  1656  8.1.1117  build failure without the +eval feature
+  4357  8.1.1118  a couple of conditions are hard to understand
+150623  8.1.1119  no support for Windows on ARM64.
+ 12141  8.1.1120  cannot easily get directory entry matches
+  2613  8.1.1121  test for term_gettitle() was disabled
+ 10288  8.1.1122  char2nr() does not handle composing characters
+ 11693  8.1.1123  no way to avoid filtering for autocomplete function
+ 27112  8.1.1124  insert completion flags are mixed up
+  9417  8.1.1125  libvterm does not handle the window position report
+  1659  8.1.1126  build failure with +terminal but without tgetent
+  6364  8.1.1127  getwinpos() doesn't work in terminal on MS-Windows console
+  1582  8.1.1128  getwinpos() test does not work on MS-Windows
+  3062  8.1.1129  when making a new screendump test have to create the file
+  1353  8.1.1130  MS-Windows: warning for unused variable
+  5938  8.1.1131  getwinpos() does not work in the MS-Windows console
+  2624  8.1.1132  getwinpos() test fails on MS-Windows
+  1668  8.1.1133  compiler warning for uninitialized struct member
+  2046  8.1.1134  buffer for quickfix window is reused for another file
+  1327  8.1.1135  build failure for small version
+  4655  8.1.1136  decoding of mouse click escape sequence is not tested
+  3658  8.1.1137  xterm mouse wheel escape sequence is not tested
+ 13009  8.1.1138  plugins don't get notified when the popup menu changes
+  1779  8.1.1139  no test for what is fixed in patch 8.1.0716
+ 11330  8.1.1140  not easy to find out what neighbors a window has
+  2370  8.1.1141  terminal winpos test fails with very large terminal
+  3089  8.1.1142  no test for dragging the window separators with the mouse
+  7653  8.1.1143  may pass weird strings to file name expansion
+  3063  8.1.1144  too strict checking of the 'spellfile' option
+  1544  8.1.1145  compiler warning for unused function
+  2057  8.1.1146  in MS-Windows console colors in a terminal window are wrong
+ 23276  8.1.1147  desktop file translations are requiring manual updates
+  4210  8.1.1148  CTRL-L with 'incsearch' does not pick up char under cursor
+  5358  8.1.1149  building desktop files fails with older msgfmt
+  1773  8.1.1150  generating desktop files not tested on Travis
+  1944  8.1.1151  build fails when using shadow directory
+  1507  8.1.1152  compiler warning with VS2019
+  1477  8.1.1153  msgfmt complains about missing LINGUAS file
+  2094  8.1.1154  getting a newer msgfmt on Travis is too complicated
+ 11428  8.1.1155  termcodes tests can be improved
+  1832  8.1.1156  Unicode emoji and other image characters not recognized
+  6593  8.1.1157  Unicode tables are out of date
+  2580  8.1.1158  json encoded string is sometimes missing the final NUL
+  1444  8.1.1159  MS-Windows: with a silent (un)install $VIM/_vimrc is removed
+  2119  8.1.1160  termcodes test would fail in a very big terminal
+  4922  8.1.1161  unreachable code
+  4451  8.1.1162  incorrect coverage information; typo in color name
+  1619  8.1.1163  codecov does not report all the coverage information
+  3865  8.1.1164  gettitle test is failing when server name differs
+  4793  8.1.1165  no test for mouse clicks in the terminal tabpage line
+  2715  8.1.1166  gettitle test can still fail when another Vim is running
+  5628  8.1.1167  no test for closing tab by click in tabline
+  1797  8.1.1168  not all screen update code of terminal is executed in tests
+  2453  8.1.1169  writing coverage info in a separate dir is not needed
+  4560  8.1.1170  terminal ANSI color test does not cover all colors
+  6529  8.1.1171  statusline test could fail in large terminal
+  3726  8.1.1172  cursor properties were not fully tested
+  3590  8.1.1173  suspend test has duplicated lines
+  1579  8.1.1174  cannot build with Ruby 1.8
+  4592  8.1.1175  no test for dragging a tab and double click for new tab
+  1605  8.1.1176  test for dragging a tab is flaky
+  2901  8.1.1177  .ts files are recognized as xml, typescript is more common
+ 14525  8.1.1178  when mouse click tests fails value of 'ttytype' is unknown
+  3112  8.1.1179  no test for mouse clicks in the fold column
+ 14037  8.1.1180  Vim script debugger tests are old style
+  7761  8.1.1181  tests for mouse clicks are a bit flaky
+  5970  8.1.1182  some function prototypes are outdated
+  4572  8.1.1183  typos in VisVim comments
+  1481  8.1.1184  undo file left behind after running test
+  2292  8.1.1185  mapping for CTRL-X is inconsistent
+  1980  8.1.1186  readdir() allocates list twice
+  3267  8.1.1187  cannot recognize Pipfile
+  7225  8.1.1188  not all Vim variables require the v: prefix
+  3968  8.1.1189  mode is not cleared when leaving Insert mode
+  2092  8.1.1190  has('vimscript-3') does not work
+  9991  8.1.1191  not all debug commands are covered by a test
+  6311  8.1.1192  mode is not cleared when leaving Insert mode with mapped Esc
+  5321  8.1.1193  typos and small problems in test files
+  7698  8.1.1194  typos and small problems in source files
+ 64388  8.1.1195  Vim script debugger functionality needs cleanup
+ 12887  8.1.1196  parallel build may fail
+  3956  8.1.1197  when starting with multiple tabs file messages is confusing
+  2533  8.1.1198  bracketed paste may remain active after Vim exists
+  2943  8.1.1199  no test for :abclear
+ 21186  8.1.1200  old style comments in debugger source
+ 10988  8.1.1201  output of :command is hard to read
+  1879  8.1.1202  always get regexp debugging logs when building with -DDEBUG
+ 17203  8.1.1203  some autocmd tests are old style
+  9395  8.1.1204  output of :command with address completion is not nice
+  7023  8.1.1205  a BufReadPre autocommand may cause the cursor to move
+  8995  8.1.1206  user command parsing and listing not properly tested
+  3025  8.1.1207  some compilers give warning messages
+  2199  8.1.1208  links to repository use wrong file name
+  2616  8.1.1209  clever compiler warns for buffer being too small
+117011  8.1.1210  support for user commands is spread out
+  4298  8.1.1211  not all user command code is tested
+  4462  8.1.1212  signal PWR is not tested
+  3079  8.1.1213  "make clean" in top dir does not cleanup indent test output
+ 11828  8.1.1214  old style tests
+  1429  8.1.1215  "make clean" does not remove generated src/po files
+  3860  8.1.1216  mouse middle click is not tested
+  1721  8.1.1217  MS-Windows: no space reserved for font quality name
+ 42786  8.1.1218  cannot set a directory for a tab page
+ 14028  8.1.1219  not checking for NULL return from alloc()
+  2167  8.1.1220  build fails on MS-Windows
+  6561  8.1.1221  filtering does not work when listing marks
+  2213  8.1.1222  build still fails on MS-Windows
+  2360  8.1.1223  middle mouse click test fails without a clipboard
+ 20780  8.1.1224  MS-Windows: cannot specify font weight
+  5031  8.1.1225  cannot create a pty to use with :terminal on FreeBSD
+172695  8.1.1226  {not in Vi} remarks get in the way of useful help text
+  2978  8.1.1227  duplicate entries in the generate .desktop files
+ 42644  8.1.1228  not possible to process tags with a function
+  1501  8.1.1229  warning for posix_openpt() not declared
+135495  8.1.1230  a lot of code is shared between vim.exe and gvim.exe
+ 26456  8.1.1231  asking about existing swap file unnecessarily
+  7360  8.1.1232  can't build on MS-Windows
+  1487  8.1.1233  cannot build tiny version
+  2359  8.1.1234  swap file test fails on MS-Windows
+  2101  8.1.1235  compiler warnings for using STRLEN() value
+  2082  8.1.1236  sjiscorr.c not found in shadow directory
+  4663  8.1.1237  error for using "compl", reserved word in C++
+  1630  8.1.1238  MS-Windows: compiler warning for sprintf() format
+  3170  8.1.1239  key with byte sequence containing CSI does not work
+  2567  8.1.1240  runtime desktop files are overwritten by build
+126633  8.1.1241  Ex command info contains confusing information
+  5153  8.1.1242  no cmdline redraw when tabpages have different 'cmdheight'
+  5173  8.1.1243  compiler warnings for incomplete switch statement
+  7305  8.1.1244  no tests for CTRL-mouse-click
+  2294  8.1.1245  ":copen 10" sets height in full-height window
+  1954  8.1.1246  cannot handle negative mouse coordinate from urxvt
+ 10352  8.1.1247  urxvt mouse codes are not tested
+ 18226  8.1.1248  no test for dec mouse
+  2419  8.1.1249  compiler warning for uninitialized variable
+  3889  8.1.1250  no test for netterm mouse
+  6622  8.1.1251  no test for completion of mapping keys
+  2415  8.1.1252  not all mapping completion is tested
+  2402  8.1.1253  mapping completion test fails
+  2908  8.1.1254  mapping completion contains dead code
+  2144  8.1.1255  building desktop files fails on FreeBSD
+ 26193  8.1.1256  cannot navigate through errors relative to the cursor
+  2460  8.1.1257  MSVC: name of object directory now always right
+  1858  8.1.1258  the "N files to edit" message can not be surpressed
+  7366  8.1.1259  crash when exiting early
+  2190  8.1.1260  comparing with pointer instead of value
+ 28360  8.1.1261  no error for quickfix commands with negative range
+  3999  8.1.1262  cannot simulate a mouse click in a test
+  3007  8.1.1263  mouse clicks in WinBar not tested
+  2531  8.1.1264  crash when closing window from WinBar click
+  7379  8.1.1265  when GPM mouse support is enabled double clicks do not work
+  2676  8.1.1266  winbar test doesn't test enough
+  3889  8.1.1267  cannot check if GPM mouse support is working
+  2079  8.1.1268  map completion test fails in GUI
+  2862  8.1.1269  MS-Windows GUI: multibyte chars with a 0x80 byte do not work
+ 22818  8.1.1270  cannot see current match position
+  2558  8.1.1271  compiler warnings for use of STRNCPY()
+  3535  8.1.1272  click on WinBar of other window not tested
+  1542  8.1.1273  compiler warning in direct write code
+  3388  8.1.1274  after :unmenu can still execute the menu with :emenu
+ 33131  8.1.1275  cannot navigate to errors before/after the cursor
+ 10831  8.1.1276  cannot combine text properties with syntax highlighting
+  1956  8.1.1277  missing screenshot update
+  1989  8.1.1278  missing change for "combine" field
+  2081  8.1.1279  cannot set 'spellang' to "sr@latin"
+661630  8.1.1280  remarks about functionality not in Vi clutters the help
+  8914  8.1.1281  cannot specify a count with :chistory
+  1605  8.1.1282  running make in src/po leaves LINGUAS file behind
+  4962  8.1.1283  delaying half a second after the top-bot message
+  2580  8.1.1284  detecting *.tmpl as htmlcheetah is outdated
+ 11647  8.1.1285  test17 is old style
+  1581  8.1.1286  running tests leaves XTest_tabpage_cmdheight file behind
+  2194  8.1.1287  cannot build with +eval but without +mouse
+  3140  8.1.1288  search stats don't show for mapped command
+  4080  8.1.1289  may not have enough space to add "W" to search stats
+  5382  8.1.1290  .hgignore and .gitignore are either distributed or in git
+ 16146  8.1.1291  not easy to change directory and restore
+  5823  8.1.1292  invalid command line arguments not tested
+ 30600  8.1.1293  MSVC files are no longer useful
+  2141  8.1.1294  MS-Windows: Some fonts return wrong average char width
+  2408  8.1.1295  when vimrun.exe does not exist external command may fail
+  5996  8.1.1296  crash when using invalid command line argument
+  2415  8.1.1297  invalid argument test fails without GTK
+  1846  8.1.1298  invalid argument test fails without X clipboard
+  2432  8.1.1299  "extends" from 'listchars' is used when 'list' is off
+  4504  8.1.1300  in a terminal 'ballooneval' does not work right away
+  3990  8.1.1301  when compiled with VIMDLL some messages are not shown
+  6327  8.1.1302  v:beval_text is not tested in Visual mode
+  9570  8.1.1303  not possible to hide a balloon
+  1951  8.1.1304  MS-Windows: compiler warning for unused value
+ 13967  8.1.1305  there is no easy way to manipulate environment variables
+ 74786  8.1.1306  Borland support is outdated and doesn't work
+  9498  8.1.1307  cannot reconnect to the X server after it restarted
+  3507  8.1.1308  the Normal highlight is not defined when compiled with GUI
+  1991  8.1.1309  test for Normal highlight fails on MS-Windows GUI
+ 19663  8.1.1310  named function arguments are never optional
+  1766  8.1.1311  aborting an autocmd with an exception is not tested
+  3177  8.1.1312  Coverity warning for using uninitialized variable
+ 13318  8.1.1313  warnings for using localtime() and ctime()
+ 28195  8.1.1314  MSVC makefile is not nicely indented
+ 19775  8.1.1315  there is always a delay if a termrequest is never answered
+  1464  8.1.1316  duplicated localtime() call
+  3912  8.1.1317  output from Travis can be improved
+140124  8.1.1318  code for text changes is in a "misc" file
+ 15069  8.1.1319  computing function length name in many places
+  6150  8.1.1320  it is not possible to track changes to a buffer
+ 12353  8.1.1321  no docs or tests for listener functions
+ 28332  8.1.1322  Cygwin makefile is not nicely indented
+  2171  8.1.1323  'mouse' option is reset when using GPM mouse
+  2117  8.1.1324  stray comma in VMS makefile
+  3883  8.1.1325  cannot build with +eval but without +channel and +timers
+  8532  8.1.1326  no test for listener with partial
+  3220  8.1.1327  unnecessary scroll after horizontal split
+  1612  8.1.1328  no test for listener with undo operation
+ 12057  8.1.1329  plans for popup window support are spread out
+  4668  8.1.1330  using bold attribute in terminal changes the color
+ 21821  8.1.1331  test 29 is old style
+ 19502  8.1.1332  cannot flush listeners without redrawing, mix of changes
+ 10643  8.1.1333  text properties don't always move after changes
+  5741  8.1.1334  when buffer is hidden "F" in 'shortmess' is not used
+ 12586  8.1.1335  listener callback is called after inserting text
+  7516  8.1.1336  some eval functionality is not covered by tests
+  3031  8.1.1337  get empty text prop when splitting line just after text prop
+  3103  8.1.1338  hang when concealing the '>' shown for half of wide char
+  1947  8.1.1339  installer needs to product name et al.
+  5613  8.1.1340  attributes from 'cursorline' overwrite textprop
+ 13574  8.1.1341  text properties are lost when joining lines
+  1850  8.1.1342  using freed memory when joining line with text property
+  9362  8.1.1343  text properties not adjusted for Visual block mode delete
+  3713  8.1.1344  Coverity complains about possibly using a NULL pointer
+  3830  8.1.1345  stuck in sandbox with ":s/../\=Function/gn"
+  4603  8.1.1346  error for Python exception does not show useful info
+  3561  8.1.1347  fractional scroll position not restored after closing window
+  2436  8.1.1348  running tests may cause the window to move
+  4102  8.1.1349  if writing runs into conversion error backup file is deleted
+  2542  8.1.1350  "W" for wrapping not shown when more than 99 matches
+  9327  8.1.1351  text property wrong after :substitute
+  2108  8.1.1352  undofile() reports wrong name
+  1693  8.1.1353  undo test fails on Mac
+  7063  8.1.1354  getting a list of text lines is clumsy
+ 14119  8.1.1355  obvious mistakes are accepted as valid expressions
+  5359  8.1.1356  some text in heredoc assignment ends the text
+ 15731  8.1.1357  test 37 is old style
+  2152  8.1.1358  cannot enter character with a CSI byte
+ 11598  8.1.1359  text property wrong after :substitute with backslash
+  2883  8.1.1360  buffer left 'nomodifiable' after :substitute
+  2858  8.1.1361  Python setuptools don't work with Python 3
+ 74916  8.1.1362  code and data in tests can be hard to read
+  2769  8.1.1363  ":vert options" does not make a vertical split
+ 16076  8.1.1364  design for popup window support needs more details
+  2089  8.1.1365  source command doesn't check for the sandbox
+ 35709  8.1.1366  using expressions in a modeline is unsafe
+  2655  8.1.1367  can set 'modelineexpr' in modeline 
+  2271  8.1.1368  modeline test fails with python but without pythonhome
+  4063  8.1.1369  get E484 when using system() during GUI startup
+  1318  8.1.1370  not using the new github feature for donations
+ 27689  8.1.1371  cannot recover from a swap file
+ 10453  8.1.1372  when evaluating 'statusline' the current window is unknown
+  4761  8.1.1373  "[p" in Visual mode puts in wrong line
+  1664  8.1.1374  check for file changed triggers too often
+ 10840  8.1.1375  without "TS" in 'shortmess' get a hit-enter prompt often
+  2992  8.1.1376  warnings for size_t/int mixups
+  2970  8.1.1377  MS-Windows GUI uses wrong shell command for bash
+ 12396  8.1.1378  delete() can not handle a file name that looks like a pattern
+  2519  8.1.1379  filechanged test hangs
+  1745  8.1.1380  MS-Windows building VIMDLL with MSVC: SUBSYSTEM is not set
+  2644  8.1.1381  MS-Windows: missing build dependency
+  3429  8.1.1382  error when editing test file
+  1444  8.1.1383  warning for size_t/int mixup
+122511  8.1.1384  using "int" for alloc() often results in compiler warnings
+  1593  8.1.1385  signed/unsigned compiler warning
+ 57371  8.1.1386  unessesary type casts for lalloc()
+  2939  8.1.1387  calling prop_add() in an empty buffer doesn't work
+  5331  8.1.1388  errors when calling prop_remove() for an unloaded buffer
+  4511  8.1.1389  changes are not flushed when end and start overlap
+  5270  8.1.1390  search stats are off when using count or offset
+ 84590  8.1.1391  no popup window support
+  1948  8.1.1392  build failure in tiny version
+ 34895  8.1.1393  unnecessary type casts
+  1935  8.1.1394  not restoring t_F2 in registers test
+  2609  8.1.1395  saving for undo may access invalid memory
+  9681  8.1.1396  'wincolor' does not apply to lines below the buffer
+  1839  8.1.1397  build fails in tiny version
+  1354  8.1.1398  duplicate line in MSVC build file
+  9429  8.1.1399  popup windows not adjusted when switching tabs
+  9406  8.1.1400  using global pointer for tab-local popups is clumsy
+  3363  8.1.1401  misspelled mkspellmem as makespellmem
+  8577  8.1.1402  "timer" option of popup windows not supported
+  3412  8.1.1403  cannot build without the timer feature
+  2368  8.1.1404  cannot change the patch level when building with NSIS
+ 10217  8.1.1405  "highlight" option of popup windows not supported
+ 16610  8.1.1406  popup_hide() and popup_show() not implemented yet
+ 15815  8.1.1407  popup_create() does not support text properties
+  5847  8.1.1408  PFL_HIDDEN conflicts with system header file
+  2113  8.1.1409  Coverity warns for using uninitialized memory
+ 16733  8.1.1410  popup_move() is not implemented yet
+  2249  8.1.1411  Coverity warns for divide by zero
+ 15747  8.1.1412  test 30 is old style
+ 10503  8.1.1413  error when the drive of the swap file was disconnected
+162670  8.1.1414  alloc() returning "char_u *" causes a lot of type casts
+  1611  8.1.1415  build error in MS-Windows GUI
+  5980  8.1.1416  popup_getposition() not implemented yet
+  2906  8.1.1417  MS-Windows: resolve() does not resolve all components of path
+  9278  8.1.1418  win_execute() is not implemented yet
+  5827  8.1.1419  listener callbacks may be called recursively
+  4898  8.1.1420  popup window size only uses first line length
+  8453  8.1.1421  drawing "~" line in popup window
+ 10040  8.1.1422  popup_getoptions() not implemented yet
+  7758  8.1.1423  popup windows use options from current window and buffer
+  1608  8.1.1424  crash when popup menu is deleted while waiting for char
+  5207  8.1.1425  win_execute() does not set window pointers properly
+  6825  8.1.1426  no test for syntax highlight in popup window
+  1520  8.1.1427  popup window screenshot test fails
+ 13745  8.1.1428  popup_atcursor() not implemented yet
+ 16242  8.1.1429  "pos" option of popup window not supported yet
+  9871  8.1.1430  popup window option "wrap" not supported
+  6035  8.1.1431  popup window listed as "Scratch"
+  1827  8.1.1432  can't build with eval feature
+  2056  8.1.1433  win_execute() may leave popup window focused
+129616  8.1.1434  test 3 is old style
+  2481  8.1.1435  memory usage test is a bit too flaky
+  2874  8.1.1436  writefile test fails when run under /tmp
+ 55359  8.1.1437  code to handle callbacks is duplicated
+  7454  8.1.1438  some commands cause trouble in a popup window
+  2008  8.1.1439  json_encode() is very slow for large results
+  2203  8.1.1440  win_execute() test fails
+ 20724  8.1.1441  popup window filter not yet implemented
+  2414  8.1.1442  popup windows not considered when the Vim window is resized
+ 17235  8.1.1443  popup window padding and border not implemented yet
+  8214  8.1.1444  not using double line characters for popup border
+ 15050  8.1.1445  popup window border highlight not implemented yet
+  8545  8.1.1446  popup window callback not implemented yet
+  3197  8.1.1447  not allowed to create an empty popup
+  4962  8.1.1448  statusline is sometimes drawn on top of popup
+ 26396  8.1.1449  popup text truncated at end of screen
+  6647  8.1.1450  popup window positioning wrong when using padding or borders
+  1671  8.1.1451  CTRL-L does not clear screen with a popup window
+  8668  8.1.1452  line and col property of popup windows not properly checked
+ 17679  8.1.1453  popup window "moved" property not implemented yet
+  1554  8.1.1454  build failure without the conceal feature
+  9469  8.1.1455  popup_atcursor() not completely implemented
+  2085  8.1.1456  WinBar not redrawn after scrolling one line
+  6435  8.1.1457  cannot reuse a buffer when loading a screen dump
+  1754  8.1.1458  crash when using gtags
+  1856  8.1.1459  popup window border looks bad when 'ambiwidth' is "double"
+  2547  8.1.1460  popup window border characters may be wrong
+  4798  8.1.1461  tests do not run or are not reliable on some systems
+  1541  8.1.1462  MS-Windows: using special character requires quoting
+  1679  8.1.1463  gcc warns for uninitialized variable
+  2538  8.1.1464  only 4-digit rgb termresponse is recognized
+  1597  8.1.1465  allocating wrong amount of memory
+  4637  8.1.1466  not updating priority on existing sign
+  2007  8.1.1467  cscope test fails
+  2739  8.1.1468  the generated desktop files may be invalid
+  7042  8.1.1469  no test for checking the cursor style response
+  1470  8.1.1470  new Unicode character U32FF missing from double-width table
+  5488  8.1.1471  'background' not correctly set for 2-digit rgb termresponse
+  1541  8.1.1472  add_termcap_entry() is not tested
+  3675  8.1.1473  new resolve() implementation causes problem for plugins
+  1786  8.1.1474  'ttybuiltin' is not tested
+  2844  8.1.1475  search string not displayed when 'rightleft' is set
+  8561  8.1.1476  no statistics displayed after running tests 
+  1626  8.1.1477  test summary fails in the tiny version
+  2052  8.1.1478  still an error when running tests with the tiny version
+  1962  8.1.1479  change included for debugging only
+  1405  8.1.1480  desktop file check doesn't run on CI
+  1707  8.1.1481  length for two-digit rgb termresponse is off by one
+  1775  8.1.1482  no test for wincol() depending on the 'number' option
+ 28681  8.1.1483  skipped tests are not properly listed
+  3128  8.1.1484  some tests are slow
+  2652  8.1.1485  double free when garbage_collect() is used in autocommand
+  4671  8.1.1486  a listener change is merged even when it adds a line
+  3188  8.1.1487  older msgfmt cannot generate proper .desktop file
+  1780  8.1.1488  summary of tests has incorrect failed count
+ 18854  8.1.1489  sign order wrong when priority was changed
+  1768  8.1.1490  when a single test fails the exit code is not set
+  2308  8.1.1491  when skipping over code a function call may cause trouble
+  3227  8.1.1492  MS-Windows: when "!" is in 'guioptions' ":!start" fails
+ 21759  8.1.1493  redrawing with popups is slow and causes flicker
+  1356  8.1.1494  build failure
+  1644  8.1.1495  memory access error
+  3364  8.1.1496  popup window height is not recomputed
+  3140  8.1.1497  accessing memory beyond allocated space
+  9711  8.1.1498  ":write" increments b:changedtick even though nothing changed
+  3944  8.1.1499  ruler not updated after popup window was removed
+  1701  8.1.1500  wrong shell command when building with VIMDLL and "!" in 'go'
+  2365  8.1.1501  new behavior of b:changedtick not tested
+118501  8.1.1502  cannot play any sound
+  1393  8.1.1503  sound test fails on Travis
+  2364  8.1.1504  sound test still fails on Travis
+  1767  8.1.1505  running "make clean" twice gives errors
+  1680  8.1.1506  syntax error in Travis config
+  2486  8.1.1507  sound test still fails on Travis
+  1577  8.1.1508  sound keeps failing on Travis
+  1669  8.1.1509  cmdline_row can become negative, causing a crash
+  6710  8.1.1510  a plugin cannot easily expand a command like done internally
+  4522  8.1.1511  matches in a popup window are not displayed properly
+  7463  8.1.1512  ch_evalexpr() hangs when used recursively
+ 34390  8.1.1513  all popup functionality is in functions, except :popupclear
+  1864  8.1.1514  MS-Windows: wrong shell command with ! in 'guioptions'
+  1349  8.1.1515  memory leak reported for sound when build with EXITFREE
+  1990  8.1.1516  time reported for a test measured wrong
+ 14979  8.1.1517  when a popup changes all windows are redrawn
+  4081  8.1.1518  crash when setting 'columns' while a popup is visible
+  2944  8.1.1519  'backupskip' may contain duplicates
+ 15516  8.1.1520  popup windows are ignored when dealing with mouse position
+  4343  8.1.1521  when a popup window is closed the buffer remains
+ 26036  8.1.1522  poup_notification() not implemented yet
+  7199  8.1.1523  cannot show range of buffer lines in popup window
+ 29893  8.1.1524  tests are silently skipped
+ 13329  8.1.1525  cannot move a popup window with the mouse
+  4935  8.1.1526  no numerical value for the patchlevel
+ 25569  8.1.1527  when moving popup window over the cmdline it is not redrawn
+  2386  8.1.1528  popup_any_visible() is unused
+  9357  8.1.1529  libcanberra is linked with even when not used
+ 12708  8.1.1530  Travis config is not optimal
+ 36011  8.1.1531  clipboard type name is inconsistent
+  2181  8.1.1532  build fails
+  2584  8.1.1533  GUI build fails on Mac
+ 19111  8.1.1534  modeless selection in popup window selects too much
+  1544  8.1.1535  popup select test fails on Mac
+  1542  8.1.1536  popup select test still fails on Mac
+  9375  8.1.1537  using "tab" for popup window can be confusing
+  7405  8.1.1538  cannot specify highlighting for notifications
+ 28235  8.1.1539  not easy to define a variable and lock it
+  1665  8.1.1540  cannot build without the +eval feature
+  1803  8.1.1541  check for ASAN is not reliable
+ 57240  8.1.1542  an OptionSet autocommand does not get enough info
+  1765  8.1.1543  const test fails with small features
+ 36036  8.1.1544  some balloon tests don't run when they can
+  1555  8.1.1545  when the screen is to small there is no message about that
+  4685  8.1.1546  in some tests 'tags' is set but not restored
+  8924  8.1.1547  functionality of bt_nofile() is confusing
+ 15690  8.1.1548  popup_dialog() is not implemented
+  1884  8.1.1549  quickfix test fails
+  6801  8.1.1550  when a popup has left padding text may be cut off
+  1514  8.1.1551  warning for shadowing popup_dragwin
+  4586  8.1.1552  cursor position is wrong after sign column changes
+ 15957  8.1.1553  not easy to change the text in a popup window
+  3970  8.1.1554  docs and tests for :const can be improved
+  7141  8.1.1555  NOT_IN_POPUP_WINDOW is confusing
+  2529  8.1.1556  command for failing screenshot does not include directory
+  4527  8.1.1557  compiler warning for unused variables in tiny version
+ 24249  8.1.1558  popup_menu() and popup_filter_menu() are not implemented yet
+ 14828  8.1.1559  popup window title property not implemented yet
+  3199  8.1.1560  popup window hidden option not implemented yet
+ 26489  8.1.1561  popup_setoptions() is not implemented yet
+  5854  8.1.1562  popup window not always redrawn after popup_setoptions()
+  4299  8.1.1563  crash when using closures
+ 11516  8.1.1564  sign column takes up space
+ 17890  8.1.1565  MS-Windows: no sound support
+  1656  8.1.1566  error message when terminal closes in another tab
+  9946  8.1.1567  localtime_r() does not respond to $TZ changes
+  1872  8.1.1568  strftime() test fails on MS-Windows
+  2553  8.1.1569  cannot build with signs but without diff feature
+  4444  8.1.1570  icon signs not displayed properly in the number column
+  3055  8.1.1571  textprop highlight starts too early if just after a tab
+  1729  8.1.1572  compiler warnings with tiny build
+  1441  8.1.1573  textprop test fails if screenhots do not work
+ 14998  8.1.1574  tabpage option not yet implemented for popup window
+ 10562  8.1.1575  callbacks may be garbage collected
+  1515  8.1.1576  compiler warning for unused argument
+  3390  8.1.1577  command line redrawn for +arabic without Arabic characters
+  7411  8.1.1578  MS-Windows: pathdef.c should depend on build options
+  6347  8.1.1579  dict and list could be GC'ed while displaying error
+ 24562  8.1.1580  cannot make part of a popup transparent
+ 26874  8.1.1581  shared functions for testing are disorganised
+  1481  8.1.1582  cannot build with +textprop but without +timers
+ 10348  8.1.1583  set_ref_in_list() only sets ref in items
+ 44905  8.1.1584  the evalfunc.c file is getting too big
+ 75691  8.1.1585  :let-heredoc does not trim enough
+  2362  8.1.1586  error number used in two places
+  4588  8.1.1587  redraw problem when sign icons in the number column
+ 26748  8.1.1588  in :let-heredoc line continuation is recognized
+ 16183  8.1.1589  popup window does not indicate scroll position
+  1754  8.1.1590  popup window test fails
+  6231  8.1.1591  on error garbage collection may free memory in use
+  4491  8.1.1592  may start file dialog while exiting
+  3610  8.1.1593  filetype not detected for C++ header files without extension
+  1676  8.1.1594  may still start file dialog while exiting
+  1482  8.1.1595  MS-Windows with VIMDLL: colors wrong in GUI
+  1705  8.1.1596  when resizing the screen may draw popup in wrong position
+ 13148  8.1.1597  cannot scroll a popup window with the mouse
+  2898  8.1.1598  update to test file missing
+  2465  8.1.1599  compiler warning for uninitialized variable
+  8679  8.1.1600  cannot specify highlighting for popup window scrollbar
+  2182  8.1.1601  missing changes to popup window test file
+  5284  8.1.1602  popup window cannot overflow on the left or right
+  3183  8.1.1603  crash when using unknown highlighting in text property
+  1551  8.1.1604  popup window scroll test is flaky
+  1871  8.1.1605  Vim may delay processing messages on a json channel
+  2492  8.1.1606  on a narrow screen ":hi" output is confusing
+ 11364  8.1.1607  popup window scrollbar does not respond to click
+ 22993  8.1.1608  the evalfunc.c file is too big
+ 19338  8.1.1609  the user cannot easily close a popup window
+  7014  8.1.1610  there is no way to add or load a buffer without side effects
+  2702  8.1.1611  bufadd() reuses existing buffer without a name
+ 22433  8.1.1612  cannot show an existing buffer in a popup window
+  1492  8.1.1613  popup window test fails with Athena and Motif
+  8295  8.1.1614  'numberwidth' can only go up to 10
+  1962  8.1.1615  crash when passing buffer number to popup_create()
+  1415  8.1.1616  build failure with gcc on Amiga
+ 27919  8.1.1617  no test for popup window with mask and position fixed
+  1731  8.1.1618  Amiga-like systems quickly run out of stack
+  4097  8.1.1619  tests are not run with GUI on Travis
+ 27253  8.1.1620  no test for popup window with border and mask
+  2045  8.1.1621  Amiga: time.h included twice
+  3421  8.1.1622  wrong width if displaying a lot of lines in a popup window
+  6923  8.1.1623  display wrong with signs in narrow number column
+  4836  8.1.1624  when testing in the GUI may try to run gvim in a terminal
+ 10292  8.1.1625  script line numbers are not exactly right
+  5533  8.1.1626  no test for closing a popup window with a modified buffer
+178065  8.1.1627  header file contains mixed comment style
+ 17733  8.1.1628  popup window functions not in list of functions
+ 39843  8.1.1629  terminal function help is in the wrong file
+  5721  8.1.1630  various small problems
+ 12742  8.1.1631  displaying signs is inefficient
+  4724  8.1.1632  build with EXITFREE but without +arabic fails
+  1608  8.1.1633  cannot generate prototypes with X11 but without GUI
+  2986  8.1.1634  terminal test fails when term_getansicolors() is missing
+  2003  8.1.1635  warnings for unused variables in small version
+  2812  8.1.1636  crash when popup has fitting scrollbar
+  2424  8.1.1637  after running tests and clean the XfakeHOME directory remains
+  2713  8.1.1638  running tests leaves some files behind
+  2582  8.1.1639  changing an autoload name into a file name is inefficient
+  5361  8.1.1640  the CursorHold autocommand takes down a balloon
+  2458  8.1.1641  garbage collection may run at a wrong moment
+  5149  8.1.1642  may use uninitialized variable
+  2153  8.1.1643  sign placement is wrong when 'foldcolumn' is set
+  2582  8.1.1644  sound test does not work on Travis
+ 35556  8.1.1645  cannot use a popup window for a balloon
+  1922  8.1.1646  build failure
+  1950  8.1.1647  build error with GTK and hangulinput feature
+  5470  8.1.1648  MS-Windows: build error with normal feaures
+  2465  8.1.1649  Illegal memory access when closing popup window
+  1866  8.1.1650  warning for using uninitialized variable
+  1882  8.1.1651  suspend test is flaky on some systems
+  3817  8.1.1652  GUI: popup window doesn't close on mouse movement
+  2427  8.1.1653  ubsan warns for possibly passing NULL pointer
+  1937  8.1.1654  GUI: screen updates from 'balloonexpr' are not displayed
+  5762  8.1.1655  popup window border drawn wrong with multi-byte char
+  3610  8.1.1656  popup window width is wrong when using Tabs
+ 13911  8.1.1657  Terminal: screen updates from 'balloonexpr' are not displayed
+  1923  8.1.1658  debug statements included in patch
+  5343  8.1.1659  popup window "mousemoved" values not correct
+  2655  8.1.1660  assert_fails() does not fail inside try/catch
+  2079  8.1.1661  cannot build with +textprop but without +balloon_eval
+  1794  8.1.1662  cannot build uninstal.exe with some version of MinGW
+  1562  8.1.1663  compiler warning for using size_t
+  2315  8.1.1664  GUI resize may cause changing Rows at a bad time
+  5033  8.1.1665  crash when popup window with mask is below the screen
+  3510  8.1.1666  click in popup window scrollbar with border doesn't scroll
+148425  8.1.1667  flags for Ex commands may clash with other symbols
+  1551  8.1.1668  popup window test is a bit flaky on some systems
+  1927  8.1.1669  Travis: test results section is closed even when failed
+  2517  8.1.1670  sign column not always properly aligned
+  1856  8.1.1671  copying a blob may result in it being locked
+  2880  8.1.1672  "make cmdidxs" doesn't work
+  4742  8.1.1673  cannot easily find the popup window at a certain position
+ 11375  8.1.1674  script to check a colorscheme can be improved
+  2464  8.1.1675  listener list not correctly updated on listener_remove()
+  5785  8.1.1676  "maxwidth" of popup window does not always work properly
+  2309  8.1.1677  tests get stuck when running into an existing swapfile
+  9569  8.1.1678  using popup_menu() does not scroll to show the selected line
+  1526  8.1.1679  test using SwapExists autocommand file may fail
+126277  8.1.1680  the command table is not well aligned
+  2888  8.1.1681  insert stray "{" when listener gets buffer line
+ 37259  8.1.1682  placing a larger number of signs is slow
+ 88199  8.1.1683  dictionary with string keys is longer than needed
+ 57067  8.1.1684  profiling functionality is spread out
+  1545  8.1.1685  missing file in distributed file list
+  2171  8.1.1686  "*" of "*{" is recognized as multipy operator
+ 64119  8.1.1687  the evalfunc.c file is too big
+ 28169  8.1.1688  old makefiles are no longer useful
+ 35669  8.1.1689  profiling code is spread out
+ 24595  8.1.1690  default padding for popup window menu is too much
+  1517  8.1.1691  diff test fails on some systems
+ 83104  8.1.1692  using *{} for literal dict is not backwards compatible
+223571  8.1.1693  syntax coloring and highlighting is in one big file
+  3384  8.1.1694  the RUN_VIM variable is longer than needed
+  1986  8.1.1695  Windows 10: crash when cursor is at bottom of terminal
+  4166  8.1.1696  MSVC: link command line is too long
+  3257  8.1.1697  cannot build with MSVC
+  3128  8.1.1698  Appveyor build with MSVC fails
+ 13582  8.1.1699  highlight_ga can be local instead of global
+  6548  8.1.1700  listener callback called for the wrong buffer
+  3320  8.1.1701  Appveyor build with MSVC fails puts progress bar in log
+  1688  8.1.1702  compiler warning for uninitialized variable
+  2247  8.1.1703  breaking out of loop by checking window pointer insufficient
+  3784  8.1.1704  C-R C-W does not work after C-G when using 'incsearch'
+ 74119  8.1.1705  using ~{} for a literal dict is not nice
+  1646  8.1.1706  typo in #ifdef
+  2606  8.1.1707  Coverity warns for possibly using a NULL pointer
+  1638  8.1.1708  Coverity warns for using uninitialized variable
+  3233  8.1.1709  Coverity warns for possibly using a NULL pointer
+  4704  8.1.1710  Coverity found dead code
+  2063  8.1.1711  listener callback called at the wrong moment
+  2626  8.1.1712  signs in number column cause text to be misaligned
+ 23640  8.1.1713  highlighting cursor line only works with popup_menu()
+ 22772  8.1.1714  cannot preview a file in a popup window
+  2015  8.1.1715  emoji characters are seen as word characters for spelling
+ 64128  8.1.1716  old style comments are wasting space
+  6399  8.1.1717  last char in menu popup window highlighted
+ 22539  8.1.1718  popup menu highlighting does not look good
+  3972  8.1.1719  popup too wide when 'showbreak' is set
+  2273  8.1.1720  crash with very long %[] pattern
+  2039  8.1.1721  build failure with normal features without netbeans interface
+  5372  8.1.1722  error when scriptversion is 2 a making a dictionary access
+  7006  8.1.1723  heredoc assignment has no room for new features
+  2630  8.1.1724  too much overhead checking for CTRL-C while processing text
+  2334  8.1.1725  MS-Windows: E325 message may use incorrect date format
+166365  8.1.1726  the eval.txt help file is too big
+ 91492  8.1.1727  code for viminfo support is spread out
+ 32394  8.1.1728  wrong place for command line history viminfo support
+  4706  8.1.1729  heredoc with trim not properly handled in function
+ 46503  8.1.1730  wrong place for mark viminfo support
+  2823  8.1.1731  command line history not read from viminfo on startup
+  3363  8.1.1732  completion in cmdwin does not work for buffer-local commands
+  7659  8.1.1733  the man ftplugin leaves an empty buffer behind
+ 37562  8.1.1734  the evalfunc.c file is too big
+  6495  8.1.1735  can't build with tiny features
+104064  8.1.1736  viminfo support is spread out
+  3492  8.1.1737  :args command that outputs one line gives more prompt
+  2419  8.1.1738  testing lambda with timer is slow
+  4004  8.1.1739  deleted match highlighting not updated in other window
+  3339  8.1.1740  exepath() doesn't work for "bin/cat"
+  5911  8.1.1741  cleared/added match highlighting not updated in other window
+ 15455  8.1.1742  still some match functions in evalfunc.c
+ 40478  8.1.1743  'hlsearch' and match highlighting in the wrong place
+  2878  8.1.1744  build error without the conceal feature
+ 18260  8.1.1745  compiler warning for unused argument
+  2637  8.1.1746  ":dl" is seen as ":dlist" instead of ":delete"
+  3725  8.1.1747  compiler warning for unused variables
+  1494  8.1.1748  :args output is not aligned
+  1831  8.1.1749  Coverity warns for using negative index
+  1517  8.1.1750  depending on the terminal width :version may miss a line break
+  8992  8.1.1751  when redrawing popups plines_win() may be called often
+  3483  8.1.1752  resizing hashtable is inefficient
+  5976  8.1.1753  use of popup window mask is inefficient
+  2211  8.1.1754  build failure
+  1805  8.1.1755  leaking memory when using a popup window mask
+  6589  8.1.1756  autocommand that splits window messes up window layout
+  3604  8.1.1757  text added with appendbufline() isn't displayed
+  4503  8.1.1758  count of g$ not used correctly when text is not wrapped
+  2322  8.1.1759  no mode char for terminal mapping from maparg()
+  3926  8.1.1760  extra line break for wrapping output of :args
+  2120  8.1.1761  filetype "vuejs" causes problems for some users
+ 12916  8.1.1762  some filetype rules are in the wrong place
+ 43046  8.1.1763  evalfunc.c is still too big
+  1872  8.1.1764  ":browse oldfiles" is not tested
+  4976  8.1.1765  get(func, dict, def) does not work properly
+ 88604  8.1.1766  code for writing session file is spread out
+ 11573  8.1.1767  FEAT_SESSION defined separately
+  3821  8.1.1768  man plugin changes setting in current window
+ 10303  8.1.1769  'shellslash' is also used for completion
+  6300  8.1.1770  cannot get the window ID of the popup preview window
+  1890  8.1.1771  options test fails on MS-Windows
+  2103  8.1.1772  options test still fails on MS-Windows
+ 28206  8.1.1773  the preview popup window may be too far to the right
+  1821  8.1.1774  test is silently skipped
+  1944  8.1.1775  error message may be empty in filetype test
+  7940  8.1.1776  text added with a job isn't displayed
+ 21381  8.1.1777  useless checks for job feature in channel test
+  5471  8.1.1778  not showing the popup window right border is confusing
+  3830  8.1.1779  not showing the popup window right border is confusing
+  1846  8.1.1780  warning for file no longer available is repeated
+  1795  8.1.1781  Amiga: no builtin OS readable version info
+  1777  8.1.1782  MS-Windows: system() has temp file error with 'noshelltemp'
+  1769  8.1.1783  MS-Windows: compiler test may fail when using %:S
+  7046  8.1.1784  MS-Windows: resolve() does not work if serial nr duplicated
+133944  8.1.1785  map functionality mixed with character input
+  5024  8.1.1786  double click in popup scrollbar starts selection
+ 22894  8.1.1787  cannot resize a popup window
+  1736  8.1.1788  missing changes in proto file
+  9813  8.1.1789  cannot see file name of preview popup window
+  2305  8.1.1790  :mkvimrc is not tested
+  5498  8.1.1791  'completeslash' also applies to globpath()
+ 34270  8.1.1792  the vgetorpeek() function is too long
+ 80021  8.1.1793  mixed comment style in globals
+ 34174  8.1.1794  tests are flaky
+  6753  8.1.1795  no syntax HL after splitting windows with :bufdo
+  1383  8.1.1796  :argdo is not tested
+ 34352  8.1.1797  the vgetorpeek() function is too long
+ 25111  8.1.1798  warning for unused variable in tiny version
+  8805  8.1.1799  cannot avoid mapping for a popup window
+ 32272  8.1.1800  function call functions have too many arguments
+  2820  8.1.1801  cannot build without the +eval feature
+  2311  8.1.1802  missing change to call_callback()
+ 32088  8.1.1803  all builtin functions are global
+  7588  8.1.1804  no test for display updating without a scroll region
+  3209  8.1.1805  au_did_filetype is declared twice
+  3201  8.1.1806  test for display updating doesn't check without statusline
+ 65373  8.1.1807  more functions can be used as a method
+  4595  8.1.1808  build failure for tiny version
+ 13711  8.1.1809  more functions can be used as a method
+  2026  8.1.1810  popup_getoptions() is missing an entry for "mapping"
+  9723  8.1.1811  popup window color cannot be set to "Normal"
+  2320  8.1.1812  reading a truncted undo file hangs Vim
+  7948  8.1.1813  ATTENTION prompt for a preview popup window
+  4866  8.1.1814  a long title in a popup window overflows
+ 54180  8.1.1815  duplicating info for internal functions
+  7545  8.1.1816  cannot use a user defined function as a method
+  2931  8.1.1817  github contribution text is incomplete
+  1333  8.1.1818  unused variable
+  8854  8.1.1819  :pedit does not work with a popup preview window
+ 11806  8.1.1820  using expr->FuncRef() does not work
+  2326  8.1.1821  no test for wrong number of method arguments
+  5289  8.1.1822  confusing error message when range is not allowed
+ 68996  8.1.1823  command line history code is spread out
+  3830  8.1.1824  crash when correctly spelled word is very long
+  2201  8.1.1825  allocating more memory than needed for extended structs
+ 36481  8.1.1826  tests use hand coded feature and option checks
+  5653  8.1.1827  allocating more memory than needed for extended structs
+  3180  8.1.1828  not strict enough checking syntax of method invocation
+  7063  8.1.1829  difference in screenshots
+  1340  8.1.1830  Travis does not report error when tests fail
+  1628  8.1.1831  confusing skipped message
+  4104  8.1.1832  win_execute() does not work in other tab
+  1368  8.1.1833  allocating a bit too much when there is no bad word.
+  9071  8.1.1834  cannot use a lambda as a method
+  3728  8.1.1835  cannot use printf() as a method
+  1663  8.1.1836  inaccurate memory estimate for Amiga-like OS
+ 14966  8.1.1837  popup test fails if clipboard is supported but not working
+ 21523  8.1.1838  there is :spellwrong and :spellgood but not :spellrare
+  2474  8.1.1839  insufficient info when test fails because of screen size
+  3194  8.1.1840  Testing: WorkingClipboard() is not accurate
+  4638  8.1.1841  no test for Ex shift commands
+  1578  8.1.1842  test listed as flaky should no longer be flaky
+  3607  8.1.1843  might be freeing memory that was not allocated
+  3206  8.1.1844  buffer no longer unloaded when adding text properties
+  2203  8.1.1845  may use NULL pointer when running out of memory
+ 15920  8.1.1846  inconsistently using GetVimCommand() and v:progpath
+  1916  8.1.1847  suspend test is failing
+  2512  8.1.1848  'langmap' is not used for CTRL-W command in terminal
+ 12211  8.1.1849  some insert complete functions in the wrong file
+  1887  8.1.1850  focus may remain in popup window
+  9649  8.1.1851  crash when sound_playfile() callback plays sound
+  2047  8.1.1852  timers test is flaky
+  3095  8.1.1853  timers test is still flaky
+  1434  8.1.1854  now another timer test is flaky
+ 10022  8.1.1855  another failing timer test
+  2266  8.1.1856  popup preview test fails sometimes
+  3073  8.1.1857  cannot use modifier with multi-byte character
+  1690  8.1.1858  test for multi-byte mapping fails on some systems
+  2171  8.1.1859  timer test sometimes fails on Mac
+  2106  8.1.1860  map timeout test is flaky
+  9455  8.1.1861  only some assert functions can be used as a method
+  1680  8.1.1862  Coverity warns for not using return value
+  4367  8.1.1863  confusing error when using a builtin function as method
+  2126  8.1.1864  still a timer test that is flaky on Mac
+  2646  8.1.1865  spellrare and spellrepall in the wrong order
+  2030  8.1.1866  modeless selection in GUI does not work properly
+  1892  8.1.1867  still a timer test that is flaky on Mac
+  5805  8.1.1868  multi-byte chars in 'listchars' fail with 'linebreak' set
+ 83540  8.1.1869  code for the argument list is spread out
+  3215  8.1.1870  using :pedit from a help file sets help filetype
+  4531  8.1.1871  modeless selection in GUI still not correct
+  2424  8.1.1872  when Vim exits because of a signal, VimLeave is not triggered
+  1550  8.1.1873  cannot build tiny version
+  4487  8.1.1874  modeless selection in popup window overlaps scrollbar
+  6210  8.1.1875  cannot get size and position of the popup menu
+  1303  8.1.1876  proto file missing from distribution
+  4229  8.1.1877  graduated features scattered
+  9357  8.1.1878  negative float before method not parsed correctly
+ 32264  8.1.1879  more functions can be used as methods
+ 32042  8.1.1880  cannot show extra info for completion in a popup window
+  1453  8.1.1881  popup window test fails in some configurations
+ 19056  8.1.1882  cannot specify properties of the info popup window
+  1717  8.1.1883  options test fails
+  4322  8.1.1884  cannot use mouse scroll wheel in popup in Insert mode
+ 86603  8.1.1885  comments in libvterm are inconsistent
+139774  8.1.1886  command line expansion code is spread out
+ 41183  8.1.1887  the +cmdline_compl feature is not in the tiny version
+ 18443  8.1.1888  more functions can be used as methods
+  2191  8.1.1889  Coverity warns for using a NULL pointer
+  5195  8.1.1890  ml_get error when deleting fold marker
+ 76302  8.1.1891  functions used in one file are global
+  7749  8.1.1892  missing index entry and option menu for 'completepopup'
+  3289  8.1.1893  script to summarize test results can be improved
+  2072  8.1.1894  not checking for out-of-memory of autoload_name()
+  4785  8.1.1895  using NULL pointer when out of memory
+  2603  8.1.1896  compiler warning for unused variable
+  2960  8.1.1897  may free memory twice when out of memory
+  2047  8.1.1898  crash when out of memory during startup
+  4260  8.1.1899  sign_place() does not work as documented
+  4857  8.1.1900  sign test fails in the GUI
+ 81445  8.1.1901  the +insert_expand feature is not always available
+  8264  8.1.1902  cannot have an info popup without a border
+ 17059  8.1.1903  cannot build without the +eval feature
+  9953  8.1.1904  cannot have an info popup align with the popup menu
+ 13091  8.1.1905  cannot set all properties of the info popup
+  4554  8.1.1906  info popup size is sometimes incorrect
+ 14608  8.1.1907  wrong position for info popup with scrollbar on the left
+ 13213  8.1.1908  every popup window consumes a buffer number
+ 12830  8.1.1909  more functions can be used as methods
+  3485  8.1.1910  redrawing too much when toggling 'relativenumber'
+  7763  8.1.1911  more functions can be used as methods
+ 26463  8.1.1912  more functions can be used as methods
+  4267  8.1.1913  not easy to compute the space on the command line
+ 47710  8.1.1914  command line expansion code is spread out
+ 18884  8.1.1915  more functions can be used as methods
+  2061  8.1.1916  trying to allocate negative amount of memory closing popup
+  8538  8.1.1917  non-current window is not redrawn when moving popup
+  5141  8.1.1918  redrawing popups is inefficient
+  4912  8.1.1919  using window options when passing a buffer to popup_create()
+  7603  8.1.1920  cannot always close a popup when filter consumes all events
+ 26148  8.1.1921  more functions can be used as methods
+  4772  8.1.1922  in diff mode global operations can be very slow
+ 58440  8.1.1923  some source files are not in a normal encoding
+  9677  8.1.1924  using empty string for current buffer is unexpected
+ 26439  8.1.1925  more functions can be used as methods
+  2184  8.1.1926  cursorline not redrawn when putting a line above the cursor
+101644  8.1.1927  code for dealing with script files is spread out
+ 31952  8.1.1928  popup windows don't move with the text when making changes
+  8098  8.1.1929  no tests for text property popup window 
+  4829  8.1.1930  cannot recognize .jsx and .tsx files
+  1705  8.1.1931  syntax test fails
+  2589  8.1.1932  ml_get errors after using append()
+121823  8.1.1933  the eval.c file is too big
+  7910  8.1.1934  not enough tests for text property popup window 
+  2124  8.1.1935  test for text property popup window is flaky
+ 11104  8.1.1936  not enough tests for text property popup window 
+  2420  8.1.1937  errors when using javascriptreact
+  2203  8.1.1938  may crash when out of memory
+ 79396  8.1.1939  code for handling v: variables in generic eval file
+  2768  8.1.1940  script tests fail
+  2790  8.1.1941  getftype() test fails on Mac
+  3218  8.1.1942  shadow directory gets outdated when files are added
+ 19664  8.1.1943  more code can be moved to evalvars.c
+  1761  8.1.1944  leaking memory when using sound callback
+  7240  8.1.1945  popup window "firstline" cannot be reset
+  3497  8.1.1946  memory error when profiling a function without a script ID
+  2130  8.1.1947  when executing one test the report doesn't show it
+  1920  8.1.1948  mouse doesn't work in Linux console
+ 11844  8.1.1949  cannot scroll a popup window to the very bottom
+  1684  8.1.1950  using NULL pointer after an out-of-memory
+  2692  8.1.1951  mouse double click test is a bit flaky
+ 12537  8.1.1952  more functions can be used as a method
+ 23683  8.1.1953  more functions can be used as a method
+ 19243  8.1.1954  more functions can be used as a method
+ 11089  8.1.1955  tests contain typos
+  3563  8.1.1956  screenshot tests may use a different encoding
+ 45414  8.1.1957  more code can be moved to evalvars.c
+106048  8.1.1958  old style comments taking up space
+  6776  8.1.1959  when using "firstline" in popup window text may jump
+ 13358  8.1.1960  fold code is spread out
+ 19391  8.1.1961  more functions can be used as a method
+  1728  8.1.1962  leaking memory when using tagfunc()
+  3341  8.1.1963  popup window filter may be called recursively
+  4148  8.1.1964  crash when using nested map() and filter()
+  7098  8.1.1965  search count message is not displayed when using a mapping
+ 60956  8.1.1966  some code in options.c fits better elsewhere
+  4284  8.1.1967  line() only works for the current window
+  3391  8.1.1968  crash when using nested map()
+ 15890  8.1.1969  popup window filter is used in all modes
+  3015  8.1.1970  search stat space wrong, no test for 8.1.1965
+  6409  8.1.1971  manually enabling features causes build errors
+  1905  8.1.1972  no proper test for getchar()
+  1433  8.1.1973  cannot build without the quickfix feature
+  2278  8.1.1974  Coverity warns for using pointer as array
+  4185  8.1.1975  MS-Windows GUI responds slowly to timer
+  1862  8.1.1976  Travis log always shows test output
+  4085  8.1.1977  terminal debugger plugin may hang
+ 15154  8.1.1978  the eval.c file is too big
+140301  8.1.1979  code for handling file names is spread out
+  4223  8.1.1980  fix for search stat not tested
+ 33287  8.1.1981  the evalfunc.c file is too big
+ 15743  8.1.1982  more functions can be used as methods
+  6255  8.1.1983  compiler nags for uninitialized variable and unused function
+ 18585  8.1.1984  more functions can be used as methods
+158542  8.1.1985  code for dealing with paths is spread out
+ 11750  8.1.1986  more functions can be used as methods
+ 19388  8.1.1987  more functions can be used as methods
+  5014  8.1.1988  :startinsert! does not work the same way as "A"
+ 25701  8.1.1989  the evalfunc.c file is still too big
+  1526  8.1.1990  cannot build with eval but without cscope
+  3017  8.1.1991  still cannot build with eval but without cscope
+  3921  8.1.1992  the search stat moves when wrapping at the end of the buffer
+ 20585  8.1.1993  more functions can be used as methods
+  5303  8.1.1994  MS-Windows: cannot build with eval but without cscope
+ 11772  8.1.1995  more functions can be used as methods
+ 19118  8.1.1996  more functions can be used as methods
+  3102  8.1.1997  no redraw after a popup window filter is invoked
+  1878  8.1.1998  redraw even when no popup window filter was invoked
+  1600  8.1.1999  calling both PlaySoundW() and PlaySoundA()
+  5352  8.1.2000  plugin cannot get the current IME status
+120298  8.1.2001  some source files are too big
+  1128  8.1.2002  version number 2000 missing
+  1886  8.1.2003  MS-Windows: code page 65001 is not recognized
+ 24484  8.1.2004  more functions can be used as methods
+303873  8.1.2005  the regexp.c file is too big
+  1538  8.1.2006  build failure with huge features but without channel feature
+  1854  8.1.2007  no test for what 8.1.1926 fixes
+  8996  8.1.2008  error for invalid range when using listener and undo
+  6398  8.1.2009  cursorline highlighting not updated in popup window
+108181  8.1.2010  new file uses old style comments
+ 22533  8.1.2011  more functions can be used as methods
+ 31362  8.1.2012  more functions can be used as methods
+ 27624  8.1.2013  more functions can be used as methods
+  1953  8.1.2014  terminal altscreen test fails sometimes
+  2295  8.1.2015  terminal altscreen test still fails sometimes
+  5693  8.1.2016  terminal altscreen test now fails on MS-Windows
+ 11292  8.1.2017  cannot execute commands after closing the cmdline window
+  3750  8.1.2018  using freed memory when out of memory and displaying message
+ 17847  8.1.2019  'cursorline' always highlights the whole line
+  8460  8.1.2020  it is not easy to change the window layout
+ 12008  8.1.2021  some global functions can be local to the file
+222708  8.1.2022  the option.c file is too big
+  2219  8.1.2023  no test for synIDattr() returning "strikethrough"
+  1527  8.1.2024  delete call commented out for debugging
+  1471  8.1.2025  MS-Windows: Including shlguid.h causes problems for msys2
+  1901  8.1.2026  possibly using uninitialized memory
+ 14491  8.1.2027  MS-Windows: problem with ambiwidth characters
+  3598  8.1.2028  options test script does not work
+ 90403  8.1.2029  cannot control 'cursorline' highlighting well
+  2387  8.1.2030  tests fail when build with normal features and terminal
+  3646  8.1.2031  cursor position wrong when resizing and using conceal
+  3506  8.1.2032  scrollbar thumb wrong in popup window
+  1411  8.1.2033  cannot build with tiny features
+  6624  8.1.2034  dark theme of GTK 3 not supported
+ 13979  8.1.2035  recognizing octal numbers is confusing
+  3941  8.1.2036  the str2nr() tests fail
+  2673  8.1.2037  can call win_gotoid() in cmdline window
+  1813  8.1.2038  has('vimscript-4') is always 0
+  3555  8.1.2039  character from 'showbreak' does not use 'wincolor'
+  5021  8.1.2040  no highlighting of current line in quickfix window
+  3916  8.1.2041  no test for diff mode with syntax highlighting
+ 14842  8.1.2042  the evalfunc.c file is too big
+  2326  8.1.2043  not sufficient testing for quoted numbers
+ 11304  8.1.2044  no easy way to process postponed work
+194601  8.1.2045  the option.c file is too big
+  9074  8.1.2046  SafeState may be triggered at the wrong moment
+ 20364  8.1.2047  cannot check the current state
+  3824  8.1.2048  not clear why SafeState and SafeStateAgain are not triggered
+  2273  8.1.2049  cannot build tiny version
+  2318  8.1.2050  popup window test fails in some configurations
+  2042  8.1.2051  double-click test is a bit flaky
+  3115  8.1.2052  using "x" before a closed fold may delete that fold
+  8982  8.1.2053  SafeStateAgain not triggered if callback uses feedkeys()
+  1758  8.1.2054  compiler test for Perl may fail
+  2858  8.1.2055  not easy to jump to function line from profile
+  2558  8.1.2056  "make test" for indent files doesn't cause make to fail
+393425  8.1.2057  the screen.c file is much too big
+  2763  8.1.2058  function for ex command is named inconsistently
+  2768  8.1.2059  fix for "x" deleting a fold has side effects
+  4906  8.1.2060  "precedes" in 'listchars' not used properly
+  2039  8.1.2061  MS-Windows GUI: ":sh" crashes when trying to use a terminal
+174949  8.1.2062  the mouse code is spread out
+  2345  8.1.2063  some tests fail when +balloon_eval_term is missing
+ 11554  8.1.2064  MS-Windows: compiler warnings for unused arguments
+  4997  8.1.2065  compiler warning building non-GUI with MinGW.
+ 13363  8.1.2066  no tests for state()
+  2466  8.1.2067  no tests for SafeState and SafeStateAgain
+  2522  8.1.2068  test for SafeState and SafeStateAgain may fail
+  1962  8.1.2069  test for SafeStateAgain may still fail
+ 49724  8.1.2070  mouse code is spread out
+  4393  8.1.2071  when 'wincolor' is set text property changes highlighting
+  2626  8.1.2072  "gk" moves to start of line instead of upwards
+  9708  8.1.2073  when editing a buffer 'colorcolumn' may not work
+  1374  8.1.2074  test for SafeState autocommand is a bit flaky
+  4227  8.1.2075  get many log messages when waiting for a typed character
+  4877  8.1.2076  crash when trying to put a terminal in a popup window
+184567  8.1.2077  the ops.c file is too big
+  1549  8.1.2078  build error with +textprop but without +terminal
+  1474  8.1.2079  popup window test fails without +terminal
+ 32462  8.1.2080  the terminal API is limited and can't be disabled
+285376  8.1.2081  the spell.c file is too big
+136670  8.1.2082  some files have a weird name to fit in 8.3 characters
+  2596  8.1.2083  multi-byte chars do not work properly with "%.*S" in printf()
+  1983  8.1.2084  Amiga: cannot get the user name
+  3081  8.1.2085  MS-Windows: draw error moving cursor over double-cell char
+  7525  8.1.2086  missing a few changes for the renamed files
+  3362  8.1.2087  cannot easily select one test function to execute
+  1833  8.1.2088  renamed libvterm mouse.c file not in distributed file list
+  2462  8.1.2089  do not get a hint that $TEST_FILTER was active
+  1444  8.1.2090  not clear why channel log file ends
+  1873  8.1.2091  double free when memory allocation fails
+  7543  8.1.2092  MS-Windows: redirect in system() does not work
+  2385  8.1.2093  MS-Windows: system() test fails
+175072  8.1.2094  the fileio.c file is too big
+  1609  8.1.2095  leaking memory when getting item from dict
+ 42644  8.1.2096  too many #ifdefs
+  4790  8.1.2097  :mksession is not sufficiently tested
+  1485  8.1.2098  mksession test fails on MS-Windows
+  2803  8.1.2099  state() test fails on some Mac systems
+  6944  8.1.2100  :mksession is not sufficiently tested
+  1659  8.1.2101  write_session_file() often defined but not used
+  1696  8.1.2102  can't build with GTK and FEAT_GUI_GNOME
+ 15741  8.1.2103  wrong error message if "termdebugger" is not executable
+ 64571  8.1.2104  the normal.c file is too big
+  2581  8.1.2105  MS-Windows: system() may crash
+  5213  8.1.2106  no tests for dragging the mouse beyond the window
+  7360  8.1.2107  various memory leaks reported by asan
+  4440  8.1.2108  cannot close the cmdline window from CmdWinEnter
+  2544  8.1.2109  popup_getoptions() hangs with tab-local popup
+  2856  8.1.2110  CTRL-C closes two popups instead of one
+  8889  8.1.2111  viminfo file not sufficiently tested
+  1585  8.1.2112  build number for ConPTY is outdated
+  2590  8.1.2113  ":help expr-!~?" only works after searching
+  1663  8.1.2114  when a popup is closed with CTRL-C the callback aborts
+  7292  8.1.2115  MS-Windows: shell commands fail if &shell contains a space
+  1766  8.1.2116  no check for out of memory
+  2943  8.1.2117  CursorLine highlight used while 'cursorline' is off
+  1765  8.1.2118  termcodes test fails when $TERM is "dumb"
+  2736  8.1.2119  memory access error for empty string
+ 17979  8.1.2120  some MB_ macros are more complicated than necessary
+  2780  8.1.2121  mode is not updated when switching to terminal
+  1551  8.1.2122  cannot build without terminal feature
+ 19491  8.1.2123  parsing CSI sequence is messy
+  2718  8.1.2124  ruler is not updated if win_execute() moves cursor
+  3752  8.1.2125  fnamemodify() fails when repeating :e
+ 12799  8.1.2126  viminfo not sufficiently tested
+335056  8.1.2127  the indent.c file is a bit big
+ 78312  8.1.2128  renamed libvterm sources makes merging difficult
+  5184  8.1.2129  using hard coded executable path in test
+  3366  8.1.2130  MSVC build fails
+  3734  8.1.2131  MSVC tests fail
+  2127  8.1.2132  MS-Windows: screen mess when not recognizing insider build
+  6357  8.1.2133  some tests fail when run as root
+ 14731  8.1.2134  modifier keys are not always recognized
+  2576  8.1.2135  with modifyOtherKeys Alt-a does not work properly
+  2341  8.1.2136  using freed memory with autocmd from fuzzer
+  2672  8.1.2137  parsing the termresponse is not tested
+  3118  8.1.2138  including the build number in the Win32 binary is confusing
+  3188  8.1.2139  the modifyOtherKeys codes are not tested
+  5477  8.1.2140  "gk" and "gj" do not work correctly in number column
+  4340  8.1.2141  :tselect has an extra hit-enter prompt
+  3444  8.1.2142  some key mappings do not work with modifyOtherKeys
+  6557  8.1.2143  cannot see each command even when 'verbose' is set
+  8483  8.1.2144  side effects when using t_ti to enable modifyOtherKeys
+ 54830  8.1.2145  cannot map <C-H> when modifyOtherKeys is enabled
+  1553  8.1.2146  build failure
+  1501  8.1.2147  crash when allocating memory fails
+  4718  8.1.2148  no test for right click extending Visual area
+  5648  8.1.2149  crash when running out of memory very early
+  3350  8.1.2150  no test for 'ttymouse' set from xterm version response
+  1520  8.1.2151  state test is a bit flaky
+  2652  8.1.2152  problems navigating tags file on MacOS Catalina
+ 10554  8.1.2153  combining text property and syntax highlight is wrong
+  2305  8.1.2154  quickfix window height wrong when there is a tabline
+  5286  8.1.2155  in a terminal window 'cursorlineopt' does not work properly
+  5299  8.1.2156  first character after Tab is not highlighted
+  1854  8.1.2157  libvterm source files missing from distribution
+  4562  8.1.2158  terminal attributes missing in Terminal-normal mode
+  3885  8.1.2159  some mappings are listed twice
+  1941  8.1.2160  cannot build with +syntax but without +terminal
+  2114  8.1.2161  mapping test fails
+  1666  8.1.2162  popup resize test is flaky
+  1727  8.1.2163  cannot build with +spell but without +syntax
+  5585  8.1.2164  stuck when using "j" in a popupwin with popup_filter_menu
+  1390  8.1.2165  mapping test fails on Mac
+  2124  8.1.2166  rubyeval() not tested as a method
+  1470  8.1.2167  mapping test fails on MS-Windows
+  2195  8.1.2168  heredoc assignment not skipped in if block
+  2148  8.1.2169  terminal flags are never reset
+  1386  8.1.2170  cannot build without the +termresponse feature
+ 63481  8.1.2171  mouse support not always available
+  4307  8.1.2172  spell highlight is wrong at start of the line
+ 24357  8.1.2173  searchit() has too many arguments
+  7447  8.1.2174  screen not recognized as supporting "sgr" mouse codes
+  3449  8.1.2175  meson files are not recognized
+  6107  8.1.2176  syntax attributes not combined with Visual highlighting
+  1907  8.1.2177  Dart files are not recognized
+  2483  8.1.2178  accessing uninitialized memory in test
+  3144  8.1.2179  pressing "q" at the more prompt doesn't stop Python output
+  4304  8.1.2180  Error E303 is not useful when 'directory' is empty
+  6819  8.1.2181  highlighting wrong when item follows tab
+  2134  8.1.2182  test42 seen as binary by git diff
+  1673  8.1.2183  running a test is a bit verbose
+ 16336  8.1.2184  option context is not copied when splitting a window
+  2134  8.1.2185  syntax test fails
+  1794  8.1.2186  cannot build without the +eval feature
+  1794  8.1.2187  error for bad regexp even though regexp is not used
+  1410  8.1.2188  build error for missing define
+  3912  8.1.2189  syntax highlighting wrong for tab
+  3812  8.1.2190  syntax test fails on Mac
+  2646  8.1.2191  when using modifyOtherKeys CTRL-X mode may not work
+ 23015  8.1.2192  cannot easily fill the info popup asynchronously
+  4357  8.1.2193  popup_setoptions(popup_getoptions()) does not work
+  4809  8.1.2194  modifyOtherKeys is not enabled by default
+  7453  8.1.2195  Vim does not exit when the terminal window is last window
+  4857  8.1.2196  MS-Windows: running tests with MSVC lacks updates
+  4070  8.1.2197  ExitPre autocommand may cause accessing freed memory
+  3470  8.1.2198  crash when using :center in autocommand
+  1752  8.1.2199  build failure when using normal features without GUI
+  2374  8.1.2200  crash when memory allocation fails
+  2245  8.1.2201  cannot build with dynamically linked Python 3.8
+  1893  8.1.2202  MS-Windows: build failure with GUI and small features
+  3644  8.1.2203  running libvterm tests without the +terminal feature
+  1522  8.1.2204  crash on exit when closing terminals
+ 39756  8.1.2205  sign entry structure has confusing name
+  2478  8.1.2206  no test for fixed issue #3893
+  9586  8.1.2207  "gn" doesn't work quite right
+  2447  8.1.2208  Unix: Tabs in output might be expanded to spaces
+  4398  8.1.2209  LF in escape codes may be expanded to CR-LF
+  9844  8.1.2210  using negative offset for popup_create() does not work
+  3426  8.1.2211  listener callback "added" argument is not the total
+  8559  8.1.2212  cannot see the selection type in :reg output
+  3431  8.1.2213  popup_textprop tests fail
+ 13145  8.1.2214  too much is redrawn when 'cursorline' is set
+  2053  8.1.2215  unreachable code in adjusting text prop columns
+  3980  8.1.2216  text property in wrong place after :substitute
+  1831  8.1.2217  compiler warning for unused variable
+  2929  8.1.2218  "gN" is off by one in Visual mode
+  5197  8.1.2219  no autocommand for open window with terminal
+  4507  8.1.2220  :cfile does not abort like other quickfix commands
+  8801  8.1.2221  cannot filter :disp output
+  1690  8.1.2222  accessing invalid memory
+  1844  8.1.2223  cannot see what buffer an ml_get error is for
+  1745  8.1.2224  cannot build Amiga version
+ 19596  8.1.2225  the "last used" info of a buffer is under used
+  5720  8.1.2226  cannot use system copy/paste in non-xterm terminals
+  6527  8.1.2227  layout wrong if 'lines' changes while cmdline window is open
+  2204  8.1.2228  screenpos() returns wrong values when 'number' is set
+ 11264  8.1.2229  cannot color number column above/below cursor differently
+  6199  8.1.2230  MS-Windows: testing external commands can be improved
+  6780  8.1.2231  not easy to move to the middle of a text line
+  1679  8.1.2232  MS-Windows: compiler warning for int size
+  5314  8.1.2233  cannot get the Vim command line arguments
+  3937  8.1.2234  get_short_pathname() fails depending on encoding
+  1960  8.1.2235  "C" with 'virtualedit' set does not include multi-byte char
+  2206  8.1.2236  ml_get error if pattern matches beyond last line
+  2197  8.1.2237  mode() result depends on whether CURSOR_SHAPE is defined
+  3350  8.1.2238  error in docs tags goes unnoticed
+  1950  8.1.2239  CI fails when running tests without building Vim
+ 15583  8.1.2240  popup window width changes when scrolling
+  8452  8.1.2241  match highlight does not combine with 'wincolor'
+  1946  8.1.2242  creating docs tags uses user preferences
+ 28309  8.1.2243  typos in comments
+  3542  8.1.2244  'wrapscan' is not used for "gn"
+  3402  8.1.2245  third character of 'listchars' tab shows in wrong place
+115098  8.1.2246  some tests are still in old style
+  1946  8.1.2247  "make vimtags" does not work in runtime/doc
+ 11148  8.1.2248  CTRL-W dot does not work when modifyOtherKeys is enabled
+  1964  8.1.2249  "make vimtags" does not print any message
+  4674  8.1.2250  CTRL-U and CTRL-D don't work in popup window
+  6411  8.1.2251  ":term command" may not work without a shell
+  1581  8.1.2252  compiler warning for int size
+  2473  8.1.2253  using "which" to check for an executable is not reliable
+  6481  8.1.2254  MS-Windows: mouse scroll wheel doesn't work in popup
+  4096  8.1.2255  ":term ++shell" does not work on MS-Windows
+  1852  8.1.2256  test for ":term ++shell" fails on MS-Windows
+  6270  8.1.2257  MS-Windows GUI: scroll wheel always uses current window
+  1415  8.1.2258  may get hit-enter prompt after entering a number
+  2409  8.1.2259  running tests may leave XfakeHOME behind
+  2298  8.1.2260  terminal test may fail on MS-Windows
+  3882  8.1.2261  with modifyOtherKeys set 'noesckeys' doesn't work
+  3131  8.1.2262  unpack assignment in function not recognized
+  1764  8.1.2263  'noesckeys' test fails in GUI
+  4859  8.1.2264  there are two test files for :let
+ 11809  8.1.2265  when popup with "botleft" does not fit it flips incorrectly
+  4353  8.1.2266  position unknown for a mouse click in a popup window
+  1806  8.1.2267  compiler warning for uninitialized variable
+  3982  8.1.2268  spell file flag zero is not recognized
+  8355  8.1.2269  tags file with very long line stops using binary search
