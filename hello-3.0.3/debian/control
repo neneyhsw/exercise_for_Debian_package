@@ -1,9 +1,9 @@
 Source: hello
 Section: devel
 Priority: optional
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Maintainer: Yu-Hsin Wang <yuhsinwa@gmail.com>
 XSBC-Original-Maintainer: Santiago Vila <sanvila@debian.org>
-Standards-Version: 4.3.0
+Standards-Version: 3.0.3
 Build-Depends: debhelper-compat (= 9)
 Homepage: http://www.gnu.org/software/hello/
 XS-Testsuite: autopkgtest

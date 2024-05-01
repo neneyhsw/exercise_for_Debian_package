@@ -1,3 +1,9 @@
+hello (3.0.3-yuhsin) focal; urgency=low
+
+  * Customize hello package with custom messages on Ubuntu 20.04
+
+ -- Yu-Hsin Wang <yuhsinwa@gmail.com>  Tue, 01 May 2024 23:04:00 +0800
+
 hello (2.10-2ubuntu2) eoan; urgency=medium
 
   * Handle exit code 77 for skipped autopkgtests.

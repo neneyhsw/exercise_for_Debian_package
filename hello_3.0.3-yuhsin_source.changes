@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Tue, 01 May 2024 23:04:00 +0800
+Source: hello
+Architecture: source
+Version: 3.0.3-yuhsin
+Distribution: focal
+Urgency: low
+Maintainer: Yu-Hsin Wang <yuhsinwa@gmail.com>
+Changed-By: Yu-Hsin Wang <yuhsinwa@gmail.com>
+Changes:
+ hello (3.0.3-yuhsin) focal; urgency=low
+ .
+   * Customize hello package with custom messages on Ubuntu 20.04
+Checksums-Sha1:
+ f287693b4c77fbf95681f99dd8a96915d2f43706 1639 hello_3.0.3-yuhsin.dsc
+ d32499f7ff12d48bd7051c68d24d0fadd8203f0c 731462 hello_3.0.3.orig.tar.gz
+ b75b4fc51dc5ae7bbbde5eba29c6608447c83b65 6816 hello_3.0.3-yuhsin.debian.tar.xz
+ de46d2e1dc748224c85370cb9c11d9cb082d8e38 6088 hello_3.0.3-yuhsin_source.buildinfo
+Checksums-Sha256:
+ f4a887c831153c94a9fb09e0691e4387cb5c54c30e1a2752cf95fb897676afee 1639 hello_3.0.3-yuhsin.dsc
+ 46c4f8081a766fdab80f33e74c5854babbbf182bbe1781faaf891ee6c1314427 731462 hello_3.0.3.orig.tar.gz
+ 3c2ed5c8dd23b6a196d33bb518e6d46f92928c3431ade02210e436aae5e49cb5 6816 hello_3.0.3-yuhsin.debian.tar.xz
+ 41d43856f8cbc200b92f7ca447364d5d9a6b42871fd33914a39edbedc9896f14 6088 hello_3.0.3-yuhsin_source.buildinfo
+Files:
+ ea30a3102b8d293114688d68971e1aa4 1639 devel optional hello_3.0.3-yuhsin.dsc
+ 748cbb15998845d3c20c08d499bf87a9 731462 devel optional hello_3.0.3.orig.tar.gz
+ 2229dd6daa63a73af570a9ea3661aa19 6816 devel optional hello_3.0.3-yuhsin.debian.tar.xz
+ 660bb7ec19393eb4ee052c9e33ac4f5d 6088 devel optional hello_3.0.3-yuhsin_source.buildinfo
+Original-Maintainer: Santiago Vila <sanvila@debian.org>
+
+-----BEGIN PGP SIGNATURE-----
+
+iQHHBAEBCgAxFiEEsMCpeR8K53gefOwRtZJfsGXTsJAFAmYyXtYTHHl1aHNpbndh
+QGdtYWlsLmNvbQAKCRC1kl+wZdOwkHc3C/9Gb7JLAMloHvrh+CHe7o5nGRn+lF8s
+6sug1B2sKZ78xlWSJocsZ+DLDmSfC4IkgK6+mSXPC7JHmJXx6+pKFJh8p7l/1CZG
+b4qVcnLYi0flow284zS/O4HNkXtoBYiA5g/hVPdrYP67jD296Uk9cpa3ufFFdAqQ
+Q3L14WwAYRyk5OO33feYXWYgkB7mR/O/kGfcVopL9zVjxme+soJQ8AKN/nJt/VLM
+HpBeotu3TrTZ8/ibT0vz8SeYDaEgAp9REtSazwh1KTxeJgF3D/D6CSrz8goDCvbF
+GJV/WAc29Sa2yH+lXksQ6s7biSRM4UxVfR56D7hOH9j4Yejkc4Iuw+sT92IpWy9O
+GhHQ5cXFD4WUN4zwPuvMNuNgycF8nj2ht2t7aaYxwyT88TWztCb06mWNrRxebIQw
+2K3GCHgB5r8dHswxh8Iiof2bVS6yDzbEzoClNMJXDNRVJiumIG5wKuyNOr6NPK6L
+iCYW4D83Kgbz2MvIEOMx8zd5caYiHMCSw08=
+=PG4d
+-----END PGP SIGNATURE-----
