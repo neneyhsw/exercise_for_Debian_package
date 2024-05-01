@@ -7,6 +7,17 @@ Operating System: Ubuntu 20.04 LTS
 
 
 ## Guide for Users  
+If you want to install this package, you can directly install the .deb file.  
+```console
+sudo apt install ./hello_3.0.3-yuhsin_amd64.deb
+```
+
+Then, you can test the hello command and the testing.sh file.  
+```console
+dpkg -S testing.sh; testing.sh
+```
+
+
 #### Step 1:  
 Install the dpkg-dev previously.  
 ```console
