@@ -15,33 +15,33 @@ Changes:
  .
    * Customize hello package with custom messages on Ubuntu 20.04
 Checksums-Sha1:
- 52cdcbadc1215d05bd222e7cdceb035fdf85517d 1639 hello_3.0.3-yuhsin.dsc
+ f287693b4c77fbf95681f99dd8a96915d2f43706 1639 hello_3.0.3-yuhsin.dsc
  d32499f7ff12d48bd7051c68d24d0fadd8203f0c 731462 hello_3.0.3.orig.tar.gz
- 4a0df4a96f815b6f7da444184c15ff1f22c62832 6792 hello_3.0.3-yuhsin.debian.tar.xz
- d67c3b8ce1f50b54c6f0b74f8d1bcb3d10432c7b 6088 hello_3.0.3-yuhsin_source.buildinfo
+ b75b4fc51dc5ae7bbbde5eba29c6608447c83b65 6816 hello_3.0.3-yuhsin.debian.tar.xz
+ de46d2e1dc748224c85370cb9c11d9cb082d8e38 6088 hello_3.0.3-yuhsin_source.buildinfo
 Checksums-Sha256:
- 4e6bb3ff39dffc2a16b2467153a7530346805119e6c79fd49dd2ee2ad74b0e0e 1639 hello_3.0.3-yuhsin.dsc
+ f4a887c831153c94a9fb09e0691e4387cb5c54c30e1a2752cf95fb897676afee 1639 hello_3.0.3-yuhsin.dsc
  46c4f8081a766fdab80f33e74c5854babbbf182bbe1781faaf891ee6c1314427 731462 hello_3.0.3.orig.tar.gz
- 4075d7d081af98c05e44f67fab13abe83d2543e83f2ee9f09723f94f9467d95d 6792 hello_3.0.3-yuhsin.debian.tar.xz
- 6031a58f51df6136ecb476c9e6dc2f18c342ed74a96e2af4e9701643f8fd176c 6088 hello_3.0.3-yuhsin_source.buildinfo
+ 3c2ed5c8dd23b6a196d33bb518e6d46f92928c3431ade02210e436aae5e49cb5 6816 hello_3.0.3-yuhsin.debian.tar.xz
+ 41d43856f8cbc200b92f7ca447364d5d9a6b42871fd33914a39edbedc9896f14 6088 hello_3.0.3-yuhsin_source.buildinfo
 Files:
- 02983cfc9a117271167bebb90397dd00 1639 devel optional hello_3.0.3-yuhsin.dsc
+ ea30a3102b8d293114688d68971e1aa4 1639 devel optional hello_3.0.3-yuhsin.dsc
  748cbb15998845d3c20c08d499bf87a9 731462 devel optional hello_3.0.3.orig.tar.gz
- 7a308b0c00ef307b83509b1afac0ceca 6792 devel optional hello_3.0.3-yuhsin.debian.tar.xz
- c695a481f7c3e8399fb3cb27a9a01254 6088 devel optional hello_3.0.3-yuhsin_source.buildinfo
+ 2229dd6daa63a73af570a9ea3661aa19 6816 devel optional hello_3.0.3-yuhsin.debian.tar.xz
+ 660bb7ec19393eb4ee052c9e33ac4f5d 6088 devel optional hello_3.0.3-yuhsin_source.buildinfo
 Original-Maintainer: Santiago Vila <sanvila@debian.org>
 
 -----BEGIN PGP SIGNATURE-----
 
-iQHHBAEBCgAxFiEEsMCpeR8K53gefOwRtZJfsGXTsJAFAmYyWnATHHl1aHNpbndh
-QGdtYWlsLmNvbQAKCRC1kl+wZdOwkMcXC/9YFRynzBl/cLH2oyESjYEMM06BgtGI
-tdKXTl+nBCbbdzJMeaj7PGOZ8n5/FbTp9OMf07ir9j5AvbKyx+NV/2HN2xzhZJJt
-QjLuf9UXjWHhXp7a/Q3QU9NjlZNU8v74uWWc+XphBaAhUAFYSIwRLpwr1fujWE+L
-XYfXC2DU3c/nI3LQiukkSrWoRT7+PBk5Qa8aj2N0y3wHbPHeR2BKg0SAGZ3SvOd5
-ZwTTp6Lfj5zb9e0PvGNbm8fejHNyQEbxT5PCdQCvyBDIPWZgbVh3ervVEl7NjFje
-VmyTbN9u94vcguenXs7BNrKx864lHcihnSyEWcnrVUFH1tBH8SDkwh7MOW3sR0ED
-SlRcbISP1DA3JuIWeai6oejwYMVW94liHpOHwUFGtH52CW0hzxqV5P+tsubtmq0C
-O5uaQIMfvYZvkatEwNpaNLi0qKmAKtiyruf8Z5RnGSOHjUHyOAb2gKpne1fhohCG
-IT7EP3J0Z08qWLtuMGC1WThJuJpEHftbs5c=
-=aNQk
+iQHHBAEBCgAxFiEEsMCpeR8K53gefOwRtZJfsGXTsJAFAmYyXtYTHHl1aHNpbndh
+QGdtYWlsLmNvbQAKCRC1kl+wZdOwkHc3C/9Gb7JLAMloHvrh+CHe7o5nGRn+lF8s
+6sug1B2sKZ78xlWSJocsZ+DLDmSfC4IkgK6+mSXPC7JHmJXx6+pKFJh8p7l/1CZG
+b4qVcnLYi0flow284zS/O4HNkXtoBYiA5g/hVPdrYP67jD296Uk9cpa3ufFFdAqQ
+Q3L14WwAYRyk5OO33feYXWYgkB7mR/O/kGfcVopL9zVjxme+soJQ8AKN/nJt/VLM
+HpBeotu3TrTZ8/ibT0vz8SeYDaEgAp9REtSazwh1KTxeJgF3D/D6CSrz8goDCvbF
+GJV/WAc29Sa2yH+lXksQ6s7biSRM4UxVfR56D7hOH9j4Yejkc4Iuw+sT92IpWy9O
+GhHQ5cXFD4WUN4zwPuvMNuNgycF8nj2ht2t7aaYxwyT88TWztCb06mWNrRxebIQw
+2K3GCHgB5r8dHswxh8Iiof2bVS6yDzbEzoClNMJXDNRVJiumIG5wKuyNOr6NPK6L
+iCYW4D83Kgbz2MvIEOMx8zd5caYiHMCSw08=
+=PG4d
 -----END PGP SIGNATURE-----
