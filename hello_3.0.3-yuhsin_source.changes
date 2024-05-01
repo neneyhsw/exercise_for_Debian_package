@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Tue, 01 May 2024 23:04:00 +0800
+Source: hello
+Architecture: source
+Version: 3.0.3-yuhsin
+Distribution: focal
+Urgency: low
+Maintainer: Yu-Hsin Wang <yuhsinwa@gmail.com>
+Changed-By: Yu-Hsin Wang <yuhsinwa@gmail.com>
+Changes:
+ hello (3.0.3-yuhsin) focal; urgency=low
+ .
+   * Customize hello package with custom messages on Ubuntu 20.04
+Checksums-Sha1:
+ 52cdcbadc1215d05bd222e7cdceb035fdf85517d 1639 hello_3.0.3-yuhsin.dsc
+ d32499f7ff12d48bd7051c68d24d0fadd8203f0c 731462 hello_3.0.3.orig.tar.gz
+ 4a0df4a96f815b6f7da444184c15ff1f22c62832 6792 hello_3.0.3-yuhsin.debian.tar.xz
+ d67c3b8ce1f50b54c6f0b74f8d1bcb3d10432c7b 6088 hello_3.0.3-yuhsin_source.buildinfo
+Checksums-Sha256:
+ 4e6bb3ff39dffc2a16b2467153a7530346805119e6c79fd49dd2ee2ad74b0e0e 1639 hello_3.0.3-yuhsin.dsc
+ 46c4f8081a766fdab80f33e74c5854babbbf182bbe1781faaf891ee6c1314427 731462 hello_3.0.3.orig.tar.gz
+ 4075d7d081af98c05e44f67fab13abe83d2543e83f2ee9f09723f94f9467d95d 6792 hello_3.0.3-yuhsin.debian.tar.xz
+ 6031a58f51df6136ecb476c9e6dc2f18c342ed74a96e2af4e9701643f8fd176c 6088 hello_3.0.3-yuhsin_source.buildinfo
+Files:
+ 02983cfc9a117271167bebb90397dd00 1639 devel optional hello_3.0.3-yuhsin.dsc
+ 748cbb15998845d3c20c08d499bf87a9 731462 devel optional hello_3.0.3.orig.tar.gz
+ 7a308b0c00ef307b83509b1afac0ceca 6792 devel optional hello_3.0.3-yuhsin.debian.tar.xz
+ c695a481f7c3e8399fb3cb27a9a01254 6088 devel optional hello_3.0.3-yuhsin_source.buildinfo
+Original-Maintainer: Santiago Vila <sanvila@debian.org>
+
+-----BEGIN PGP SIGNATURE-----
+
+iQHHBAEBCgAxFiEEsMCpeR8K53gefOwRtZJfsGXTsJAFAmYyWnATHHl1aHNpbndh
+QGdtYWlsLmNvbQAKCRC1kl+wZdOwkMcXC/9YFRynzBl/cLH2oyESjYEMM06BgtGI
+tdKXTl+nBCbbdzJMeaj7PGOZ8n5/FbTp9OMf07ir9j5AvbKyx+NV/2HN2xzhZJJt
+QjLuf9UXjWHhXp7a/Q3QU9NjlZNU8v74uWWc+XphBaAhUAFYSIwRLpwr1fujWE+L
+XYfXC2DU3c/nI3LQiukkSrWoRT7+PBk5Qa8aj2N0y3wHbPHeR2BKg0SAGZ3SvOd5
+ZwTTp6Lfj5zb9e0PvGNbm8fejHNyQEbxT5PCdQCvyBDIPWZgbVh3ervVEl7NjFje
+VmyTbN9u94vcguenXs7BNrKx864lHcihnSyEWcnrVUFH1tBH8SDkwh7MOW3sR0ED
+SlRcbISP1DA3JuIWeai6oejwYMVW94liHpOHwUFGtH52CW0hzxqV5P+tsubtmq0C
+O5uaQIMfvYZvkatEwNpaNLi0qKmAKtiyruf8Z5RnGSOHjUHyOAb2gKpne1fhohCG
+IT7EP3J0Z08qWLtuMGC1WThJuJpEHftbs5c=
+=aNQk
+-----END PGP SIGNATURE-----

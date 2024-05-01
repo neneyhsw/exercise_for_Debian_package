@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# This script will echo the string during installation time
+#
+# 04/30/2024
+
+set -e
+
+echo "this is a test from Yu-Hsin Wang"
+
+exit 0
+
