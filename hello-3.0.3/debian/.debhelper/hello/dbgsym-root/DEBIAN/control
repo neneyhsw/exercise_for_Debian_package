@@ -1,0 +1,14 @@
+Package: hello-dbgsym
+Package-Type: ddeb
+Source: hello
+Version: 3.0.3-yuhsin
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Yu-Hsin Wang <yuhsinwa@gmail.com>
+Installed-Size: 53
+Depends: hello (= 3.0.3-yuhsin)
+Section: debug
+Priority: optional
+Description: debug symbols for hello
+Build-Ids: 70ff744e4e0f45ce7c71780e52f0b262c88b009e
+Original-Maintainer: Santiago Vila <sanvila@debian.org>
