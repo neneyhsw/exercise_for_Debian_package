@@ -5,6 +5,16 @@ This is a simple exercise that related to the operations of Debian package.
 ## Environment  
 Operating System: Ubuntu 20.04 LTS  
 
+## Preparation  
+For this exercise, you need to create the Launchpad account and upload your OpenPGP key.  
+Launchpad: https://launchpad.net/  
+OpenPGP keyserver: https://keyserver.ubuntu.com/  
+
+In Ubuntu, you can use gpg command to generate the key pair.  
+```console
+gpg --gen-key
+```
+
 
 ## Guide for Users  
 If you want to install this package, you can directly install the .deb file.  
@@ -19,9 +29,10 @@ dpkg -S testing.sh; testing.sh
 
 
 #### Step 1:  
-Install the dpkg-dev previously.  
+Install the dpkg-dev and related packages previously.  
 ```console
 sudo apt install dpkg-dev
+sudo apt install vim git dpkg-dev devscripts debhelper
 ```
 
 Add the line into /etc/apt/sources.list  
@@ -49,6 +60,7 @@ Create a folder at debian/scripts
 ```console
 cd hello-3.0.3
 mkdir debian/scripts
+vim debian/testing.sh
 ```
 
 Add the testing.sh file into debian/scripts folder. Write the message and redirect stdout to stderr.  
@@ -66,7 +78,7 @@ exit 0
 
 Then, add the execute permission for testing.sh.  
 ```console
-chmod +x testing.sh
+chmod +x debian/testing.sh
 ```
 
 We can execute testing.sh to check the result.  
@@ -94,7 +106,7 @@ exit 0
 
 Also, change the execute permission.  
 ```console
-chmod +x postinst
+chmod +x debian/postinst
 ```
 
 #### Step 5:  
